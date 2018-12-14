@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style>
+</style>
+
+
+</head>
+<body>
+
+	<h1>Self invoking Functions(자가 호출 함수 - 함수선언 + 함수호출)</h1>
+
+	<button onclick="myFunction()">함수 호출</button>
+
+	<div id="demo"></div>
+
+	<script>
+		/*
+		Parameter Rules
+		JavaScript function definitions do not specify data types for parameters.
+
+		JavaScript functions do not perform type checking on the passed arguments.
+
+		JavaScript functions do not check the number of arguments received.
+		 */
+
+		function test(a,b) {
+			return a*b;
+		}
+		
+		function myFunction(){
+			var result = test(10, 20, 30);
+			document.getElementById("demo").innerHTML = result;
+		}
+	</script>
+	
+
+</body>
+</html>

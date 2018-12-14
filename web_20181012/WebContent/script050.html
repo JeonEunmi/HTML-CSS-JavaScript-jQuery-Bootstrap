@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style>
+</style>
+
+
+</head>
+<body>
+
+	<h1>Removing Existing HTML Elements</h1>
+
+	<button onclick="myFunction()">이벤트에 의한 함수 호출</button>
+
+	<div id="demo"></div>
+
+	<script>
+
+		//2차 함수 -> 진법 변환 액션 구현
+		function myFunction() {
+			
+			//일회용 함수 호출, 외부 호출 불가
+			var toBin = function(a) {
+				var result = "";
+				var b = true;
+				while (b) {
+					if (m == 0) {
+						break;
+					}
+					var n = a % 2;
+					var m = parseInt(a / 2);
+					a = m;
+					result = n + result + "";
+
+				}
+				return result;
+			};
+
+			var txt = "";
+			for (var a = 1; a <= 10; ++a) {
+				txt += a + " -> " + toBin(a) + "<br>";
+			}
+			document.getElementById("demo").innerHTML = txt;
+		}
+	</script>
+	
+
+</body>
+</html>

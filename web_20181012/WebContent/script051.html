@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style>
+</style>
+
+
+</head>
+<body>
+
+	<h1>Function Constructor(함수생성자))</h1>
+
+	<button onclick="myFunction()">이벤트에 의한 함수 호출</button>
+
+	<div id="demo"></div>
+
+	<script>
+		/*
+		함수 생성자
+		-Function 객체의 생성자를 이용한 함수 선언
+		-생성자 매개변수에 함수 구성 요소 전달
+		
+		var 변수 = New Function (함수 구성 요소);
+		
+		
+		 */
+
+		function myFunction() {
+
+			var x = new Function("a", "b", "return a * b");
+			var result = x(2, 3);
+			document.getElementById("demo").innerHTML = result;
+		}
+	</script>
+	
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style>
+</style>
+
+
+</head>
+<body>
+
+	<h1>The this Keyword(this 키워드)</h1>
+
+	<!-- 사용자가 발생시키는 이벤트 필요 -->
+	<button onclick="myFunction(this)">함수 호출</button>
+
+	<div id="demo"></div>
+
+	<script>
+
+		/*
+		this 키워드
+		- 이벤트가 발생한 객체 자신의 정보
+		*/
+		
+		function myFunction(obj){
+			//obj 변수에 전달되는 객체 정보는 button 객체이다.
+			
+			obj.innerHTML = "HELLO, World!";
+		}
+	</script>
+	
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style>
+</style>
+
+
+</head>
+<body>
+
+	<h1>The this Keyword(this 키워드)</h1>
+
+	<!-- 사용자가 발생시키는 이벤트 필요 -->
+	<button onclick="myFunction(this)">tomato</button>
+	<button onclick="myFunction(this)">orange</button>
+	<button onclick="myFunction(this)">white</button>
+
+	<div id="demo" style = "min-height:100px; background-color : white;"></div>
+
+	<script>
+
+		/*
+		문제) 배경색이 지정된 버튼 클릭시 DIV태그 배경색이 변경되도록 설정
+		*/
+		
+		function myFunction(obj){
+			//obj 변수에 전달되는 객체 정보는 button 객체이다.
+			
+			document.ElementById("demo").style.backgroundColor = obj.innerText;
+		}
+	</script>
+	
+
+</body>
+</html>

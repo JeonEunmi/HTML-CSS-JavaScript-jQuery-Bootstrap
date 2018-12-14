@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style>
+</style>
+
+
+</head>
+<body>
+
+	<h1>Removing Existing HTML Elements</h1>
+
+	<button onclick="myFunction()">이벤트에 의한 함수 호출</button>
+
+	<div id="demo"></div>
+
+	<script>
+		/*
+		함수 표현식
+		-함수명 없이 함수 선언 및 사용하는 상황
+		-문자 끝에 ; 표기
+		
+		var 변수 = function (매개변수 리스트) {
+			실행코드;
+		};
+		
+		 */
+
+		function myFunction(){
+			 
+		var x = function (a,b) {return a*b};
+		var result = x(2,3);
+		
+		document.getElementById("demo").innerHTML = result;
+		 }
+		
+	</script>
+	
+
+</body>
+</html>
