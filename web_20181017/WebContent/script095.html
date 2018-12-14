@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+<
+style>table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+div.input {
+	margin-bottom: 10px;
+	padding: 10px;
+	border: 1px solid #e5e5e5;
+}
+</style>
+
+</head>
+<body>
+
+	<h1>JavaScript Object(사용자 정의 객체)</h1>
+	<div class="input">
+
+		이름> <input type="text" id="name"> 전화번호> <input type="text"
+			id="phone">이메일> <input type="text" id="email"> 등록일> <input
+			type="date" id="regDate">
+
+
+		<button onclick="myFunction01()">신규 회원 정보 등록 버튼</button>
+	</div>
+
+
+	<div class="input">
+
+		<button onclick="myFunction04()">회원 정보 전체 출력 버튼</button>
+	</div>
+
+	<div class="input">
+		회원번호<input type="radio" name="searchKey" value="number"> 이름<input
+			type="radio" name="searchKey" value="name" checked> 전화번호<input
+			type="radio" name="searchKey" value="phone"> 이메일<input
+			type="radio" name="searchKey" value="email"> 등록일<input
+			type="radio" name="searchKey" value="regDate"><br> 검색> <input
+			type="text" id="search">
+		<button onclick="myFunction03()">회원 정보 검색 버튼</button>
+	</div>
+
+	<div id="demo"></div>
+
+	<script>
+		var memberArray = [];
+
+		function myFunction01() {
+
+			var m = "";
+
+			m = memberArray.length + 1 >= 10 ? "M" : "M0";
+
+			var count = m + (memberArray.length + 1);
+			var name = document.getElementById("name").value;
+			var phone = document.getElementById("phone").value;
+			var email = document.getElementById("email").value;
+			var regDate = document.getElementById("regDate").value;
+
+			var result = createObject(count, name, phone, email, regDate);
+			memberArray.push(result);
+
+			document.getElementById("demo").innerHTML = "회원이 등록되었습니다."
+
+		}
+
+		function myFunction02(array) {
+
+			var txt = "";
+
+			txt += "<div>" + "총 : " + array.length + " 건" + "</div>"
+
+			txt += "<table><tbody>";
+			txt += "<tr><th>회원아이디</th><th>이름</th>";
+			txt += "<th>전화번호</th><th>이메일</th><th>등록일</th>";
+
+			for (var i = 0; i < array.length; i++) {
+
+				txt += "<tr><th>" + array[i].number + "</th><th>"
+						+ array[i].name + "</th><th>" + array[i].phone
+						+ "</th>";
+				txt += "<th>" + array[i].email + "</th><th>" + array[i].regDate
+						+ "</th><tr>";
+
+			}
+
+			txt += "</tbody></table>";
+
+			document.getElementById("demo").innerHTML = txt;
+		}
+
+		function myFunction03(obj) {
+
+			var txt = "";
+
+			var brr = [];
+
+			var key = document.getElementsByName("searchKey");
+
+			var value2 = "";
+
+			for (var a = 0; a < key.length; a++) {
+				if (key[a].checked) {
+					value2 = key[a].value;
+				}
+
+			}
+
+			for (var a = 0; a < memberArray.length; ++a) {
+				var temp = memberArray[a];
+
+				if (temp[value2] == document.getElementById("search").value) {
+					brr.push(temp);
+				}
+
+			}
+
+			if (brr.length == 0) {
+				txt += "일치하는 검색결과가 없습니다!";
+			} else {
+				return myFunction02(brr);
+			}
+
+			document.getElementById("demo").innerHTML = txt;
+
+		}
+
+		function myFunction04() {
+
+			return myFunction02(memberArray);
+		}
+
+		function createObject(count, name, phone, email, regDate) {
+
+			var member = new Object();
+
+			member.number = count;
+			member.name = name;
+			member.phone = phone;
+			member.email = email;
+			member.regDate = regDate;
+
+			return member;
+
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+</style>
+
+</head>
+<body>
+
+	<h1>JavaScript Object(사용자 정의 객체)</h1>
+
+	이름>
+	<input type="text" id="name"> 전화번호>
+	<input type="text" id="phone">이메일>
+	<input type="text" id="email"> 등록일>
+	<input type="date" id="regDate">
+
+
+	<button onclick="myFunction()">신규 회원 정보 등록 버튼</button><br>
+	총 : <span id = "count">0</span> 건
+	<div id="demo"></div>
+
+	<script>
+		var memberArray = [];
+
+		function myFunction() {
+			//외부 자료를 가지고 JavaScript Obejct 생성 및 자료 저장 
+
+			var m = "";
+
+			m = memberArray.length+1 >= 10 ? "M": "M0";
+
+			var count = m + (memberArray.length + 1);
+			var name = document.getElementById("name").value;
+			var phone = document.getElementById("phone").value;
+			var email = document.getElementById("email").value;
+			var regDate = document.getElementById("regDate").value;
+
+			var result = createObject(count, name, phone, email, regDate);
+			memberArray.push(result);
+
+			var txt = "";
+
+			txt += "<table><tbody>";
+			txt += "<tr><th>회원아이디</th><th>이름</th>";
+			txt += "<th>전화번호</th><th>이메일</th><th>등록일</th>";
+
+			for (var i = 0; i < memberArray.length; i++) {
+
+				txt += "<tr><th>" + memberArray[i].number + "</th><th>"
+						+ memberArray[i].name + "</th><th>"
+						+ memberArray[i].phone + "</th>";
+				txt += "<th>" + memberArray[i].email + "</th><th>"
+						+ memberArray[i].regDate + "</th><tr>";
+
+			}
+
+			txt += "</tbody></table>";
+
+			document.getElementById("demo").innerHTML = txt;
+			document.getElementById("count").innerHTML = memberArray.length;
+		}
+
+		function createObject(count, name, phone, email, regDate) {
+
+			var member = new Object();
+
+			member.number = count;
+			member.name = name;
+			member.phone = phone;
+			member.email = email;
+			member.regDate = regDate;
+
+			return member;
+
+		}
+	</script>
+
+
+</body>
+</html>

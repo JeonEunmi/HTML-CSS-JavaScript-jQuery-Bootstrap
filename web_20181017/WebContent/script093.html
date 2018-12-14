@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+
+	<h1>JavaScript Object(사용자 정의 객체)</h1>
+
+	이름:
+	<input type="text" id="name"> 전화번호:
+	<input type="text" id="phone">
+
+	<button onclick="myFunction()">객체 생성 및 결과 출력</button>
+	<div id="demo"></div>
+
+	<script>
+		/*
+		 JavaScript Object(사용자 정의 객체)
+		
+		 Using the JavaScript keyword new
+		 - new 키워드를이용한 Object 생성
+		
+		 형식)
+		 var 변수 = new Object();
+		 변수.프로퍼티명 = 값;
+		 변수.메소드명 = function() {실행코드;};
+		 */
+
+		var personArray = [];
+
+		function myFunction() {
+			//외부 자료를 가지고 JavaScript Obejct 생성 및 자료 저장 
+
+			var name = document.getElementById("name").value;
+			var phone = document.getElementById("phone").value;
+
+			var result = createObject(name, phone);
+			personArray.push(result);
+
+			var txt = "";
+
+			for (var i = 0; i < personArray.length; i++) {
+
+				txt += "name: " + personArray[i].name + ",";
+				txt += "phone: " + personArray[i].phone + "<br>"; 
+
+			}
+			document.getElementById("demo").innerHTML = txt;
+
+		}
+
+		function createObject(name, phone) {
+
+			var person = new Object();
+			person.name = name;
+			person.phone = phone;
+
+			return person;
+
+		}
+	</script>
+
+
+</body>
+</html>

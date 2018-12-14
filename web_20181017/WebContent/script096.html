@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+<
+style>table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+div.input {
+	margin-bottom: 10px;
+	padding: 10px;
+	border: 1px solid #e5e5e5;
+}
+</style>
+
+</head>
+<body>
+
+	<h1>** 성적관리 v5.0 **</h1>
+	<div class="input">
+
+		이름> <input type="text" id="name"> 과목1> <input type="number"
+			id="sub1" min="0" max="100">과목2> <input type="number"
+			id="sub2" min="0" max="100"> 과목3> <input type="number"
+			id="sub3" min="0" max="100">
+		<button onclick="myFunction01()">성적 정보 입력 버튼</button>
+	</div>
+
+
+	<div class="input">
+		<button onclick="myFunction04()">성적 정보 전체 출력 버튼</button>
+	</div>
+
+	<div class="input">
+		회원번호<input type="radio" name="searchKey" value="number"> 이름<input
+			type="radio" name="searchKey" value="name" checked><br>
+		검색> <input type="text" id="search">
+		<button onclick="myFunction03()">성적 정보 검색 버튼</button>
+	</div>
+
+	<div id="demo"></div>
+
+	<script>
+		var scoreArray = [];
+
+		function myFunction01() {
+
+			var s = "";
+
+			s = scoreArray.length + 1 >= 10 ? "S" : "S0";
+
+			var count = s + (scoreArray.length + 1);
+			var name = document.getElementById("name").value;
+			var sub1 = document.getElementById("sub1").value;
+			var sub2 = document.getElementById("sub2").value;
+			var sub3 = document.getElementById("sub3").value;
+
+			var score = new Score(count, name, sub1, sub2, sub3);
+
+			scoreArray.push(score);
+
+			document.getElementById("demo").innerHTML = "성적이 등록되었습니다.";
+		}
+
+		function myFunction02(array) {
+
+			var txt = "";
+
+			txt += "<div>" + "총 : " + array.length + " 건" + "</div>"
+
+			txt += "<table><tbody>";
+			txt += "<tr><th>번호</th><th>이름</th>";
+			txt += "<th>과목1</th><th>과목2</th><th>과목3</th>";
+			txt += "<th>총점</th><th>평균</th><th>석차</th>";
+
+			for (var i = 0; i < array.length; i++) {
+				var t = array[i];
+				txt += "<tr><th>" + t.number + "</th><th>" + t.name
+						+ "</th><th>" + t.sub1 + "</th>";
+				txt += "<th>" + t.sub2 + "</th><th>" + t.sub3 + "</th><th>"
+						+ t.total() + "</th><th>" + t.avg().toFixed(1)
+						+ "</th><th>" + t.rank(scoreArray) + "</th></tr>";
+
+			}
+
+			txt += "</tbody></table>";
+
+			document.getElementById("demo").innerHTML = txt;
+		}
+
+		function myFunction03(obj) {
+
+			var txt = "";
+
+			var brr = [];
+
+			var key = document.getElementsByName("searchKey");
+
+			var value2 = "";
+
+			for (var a = 0; a < key.length; a++) {
+				if (key[a].checked) {
+					value2 = key[a].value;
+				}
+
+			}
+
+			for (var a = 0; a < scoreArray.length; ++a) {
+				var temp = scoreArray[a];
+
+				if (temp[value2] == document.getElementById("search").value) {
+					brr.push(temp);
+				}
+
+			}
+
+			if (brr.length == 0) {
+				txt += "일치하는 검색결과가 없습니다!";
+			} else {
+				return myFunction02(brr);
+			}
+
+			document.getElementById("demo").innerHTML = txt;
+
+		}
+
+		function myFunction04() {
+
+			return myFunction02(scoreArray);
+		}
+
+		function Score(count, name, sub1, sub2, sub3) {
+
+			this.number = count;
+			this.name = name;
+			this.sub1 = sub1;
+			this.sub2 = sub2;
+			this.sub3 = sub3;
+			this.total = function() {
+				return parseInt(this.sub1) + parseInt(this.sub2)
+						+ parseInt(this.sub3);
+			};
+			this.avg = function() {
+				return this.total() / 3;
+			};
+			this.rank = function(scoreArray) {
+				var r = 1;
+				for (var a = 0; a < scoreArray.length; a++) {
+					var t = scoreArray[a];
+					if (this.total() < t.total()) {
+						r++;
+
+					}
+				}
+				return r;
+			};
+
+		}
+	</script>
+</body>
+</html>
