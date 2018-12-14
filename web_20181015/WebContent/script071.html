@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+
+	<h1>String Object Method and Properties</h1>
+	
+	원본 문자열:<input type="text" id="a" 
+		value="Please locate where 'locate' occurs!">
+	탐색 문자열:<input type="text" id="b">
+	<button onclick="myFunction()">문자열 메소드 호출</button>
+	<div id="demo"></div>
+
+	<script>
+		/* 
+		 String Object Method and Properties
+		 The length property returns the length of a string:
+		 - 문자열의 글자수 반환
+		 The indexOf() method returns the index of (the position of) the first occurrence of a specified text in a string:
+		 - 문자열 내부에서 특정 문자열 탐색. 왼쪽부터 탐색. 탐색 시작 위치 지정 가능.
+		 The lastIndexOf() method returns the index of the last occurrence of a specified text in a string:
+		 - 문자열 내부에서 특정 문자열 탐색. 오른쪽부터 탐색. 탐색 시작 위치 지정 가능.
+		 The search() method searches a string for a specified value and returns the position of the match:
+		 - 문자열 내부에서 특정 문자열 탐색. 왼쪽부터 탐색. 탐색 시작 위치 지정 불가.
+		 */
+		 
+		 function myFunction() {
+			 var a = document.getElementById("a");
+			 var b = document.getElementById("b");
+			
+			 var txt = "";
+			 
+			 txt += "value:" + a.value + "<br>";
+			 txt += "length:" + a.value.length + "<br>";
+			 txt += "indexOf():" + a.value.indexOf(b.value) + "<br>";
+			 txt += "lastIndexOf():" + a.value.lastIndexOf(b.value) + "<br>";
+			 
+			 document.getElementById("demo").innerHTML = txt;
+		 }
+		 
+	</script>
+</body>
+</html>

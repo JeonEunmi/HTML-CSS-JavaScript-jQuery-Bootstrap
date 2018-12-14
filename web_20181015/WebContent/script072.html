@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+
+	<h1>String Object Method and Properties</h1>
+	
+	원본 문자열:<input type="text" id="a" 
+		value="Please locate where 'locate' occurs!">
+	탐색 문자열:<input type="text" id="b">
+	<button onclick="myFunction()">문자열 메소드 호출</button>
+	<div id="demo"></div>
+
+	<script>
+		/* 
+		 String Object Method and Properties
+		 The length property returns the length of a string:
+		 - 문자열의 글자수 반환
+		 The indexOf() method returns the index of (the position of) the first occurrence of a specified text in a string:
+		 - 문자열 내부에서 특정 문자열 탐색. 왼쪽부터 탐색. 탐색 시작 위치 지정 가능.
+		 The lastIndexOf() method returns the index of the last occurrence of a specified text in a string:
+		 - 문자열 내부에서 특정 문자열 탐색. 오른쪽부터 탐색. 탐색 시작 위치 지정 가능.
+		 The search() method searches a string for a specified value and returns the position of the match:
+		 - 문자열 내부에서 특정 문자열 탐색. 왼쪽부터 탐색. 탐색 시작 위치 지정 불가.
+		 The substring() extracts a part of a string and returns the extracted part in a new string.
+		 - 부분 문자열 반환
+		 The substr() extracts a part of a string and returns the extracted part in a new string.
+		 - 부분 문자열 반환
+		 The replace() method replaces a specified value with another value in a string:
+	     - 문자열 치환
+	     A string is converted to upper case with toUpperCase():
+	     - 대문자 변환
+	     A string is converted to lower case with toLowerCase():
+	     - 소문자 변환
+	     concat() joins two or more strings:
+	     - 문자열 결합
+	     String.trim() removes whitespace from both sides of a string.
+	     - 공백 제거
+	     The charAt() method returns the character at a specified index (position) in a string:
+	     - 특정 위치의 문자 반환
+	     The charCodeAt() method returns the unicode of the character at a specified index in a string:
+	     - 특정 위치의 문자에 대한 코드 반환
+	     A string can be converted to an array with the split() method:
+	     - 문자열을 구분자에 의해 분리해서 배열로 반환
+		 */
+		 
+		 function myFunction() {
+			 var a = document.getElementById("a");
+			 var b = document.getElementById("b");
+			
+			 var txt = "";
+			 
+			 txt += "value:" + a.value + "<br>";
+			 txt += "length:" + a.value.length + "<br>";
+			 txt += "indexOf():" + a.value.indexOf(b.value) + "<br>";
+			 txt += "lastIndexOf():" + a.value.lastIndexOf(b.value) + "<br>";
+			 txt += "search():" + a.value.search(b.value) + "<br>";
+			 txt += "replace():" + a.value.replace("locate", "LOCATE") + "<br>";
+			 txt += "replace(/g):" + a.value.replace(/locate/g, "LOCATE") + "<br>";
+			 
+			 document.getElementById("demo").innerHTML = txt;
+		 }
+		 
+	</script>
+</body>
+</html>

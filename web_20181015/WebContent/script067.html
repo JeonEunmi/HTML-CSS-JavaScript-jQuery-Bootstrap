@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+
+<body>
+
+	<h1>JavaScript Events(자바스크립트 이벤트)</h1>
+
+	<!-- 사용자가 발생시키는 이벤트와 자바스크립트 함수에 대한 연결 -->
+	<!-- 버튼 객체 탐색을 위한 식별자 추가 필요 -->
+	<button id="btn01">이벤트등록</button>
+	<button id="btn02">이벤트제거</button>
+
+	<!-- mousemove 이벤트를 동적 등록, 제거할 대상 준비 -->
+	<div id="demo" style="min-height: 100px; background-color: tomato;"></div>
+
+	<script>
+		/* 
+
+		In JavaScript, using the addEventListener() method:
+		object.addEventListener("이벤트", 함수명);
+		object.removeEventListener("이벤트", 함수명);
+		 */
+
+		document.getElementById("btn01").addEventListener(
+				"click",
+				function() {
+					document.getElementById("demo").addEventListener("mousemove",
+							myFunction)
+					alert("동적 이벤트 등록!");
+				});
+		 
+		function myFunction(){
+			document.getElementById("demo").innerHTML = Math.random();
+		}
+		
+		document.getElementById("btn02").addEventListener(
+				"click",
+				function() {
+					document.getElementById("demo").removeEventListener("mousemove",
+							myFunction)
+					alert("동적 이벤트 제거!");
+				});
+	</script>
+</body>
+</html>

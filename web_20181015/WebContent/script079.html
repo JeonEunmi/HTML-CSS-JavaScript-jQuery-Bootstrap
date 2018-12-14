@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+	<h1>Array Object Methods and Properties</h1>
+	원본 자료 :
+	<input type="text" id="a">
+	<button onclick="myFunction()">영어단어 배열 저장</button>
+	<div id="demo"></div>
+	<script>
+		/* 
+		The JavaScript method toString() converts an array to a string of (comma separated) array values.
+		배열 요소를 문자열로 반환
+		
+		The join() method also joins all array elements into a string.
+		배열 요소를 문자열로 반환. 사용자 지정 구분자 사용.
+		
+		The pop() method removes the last element from an array:
+		배열 요소 한개를 반환. 주의사항. 반환 후 배열의 크기는 줄어든다.
+		
+		The push() method adds a new element to an array (at the end):
+		배열 요소 한개를 추가. 주의사항. 추가 후 배열의 크기는 늘어난다.
+		
+		The splice() method can be used to add new items to an array:
+		- 배열 요소를 추가, 삭제, 위치 지정 가능
+		 */
+		var arr = [];
+		var tmp = "";
+		function myFunction() {
+			var a = document.getElementById("a");
+
+			arr.push(a.value);
+			arr.sort();
+			
+			
+			tmp += arr.join("/") + "<br>";
+					
+			document.getElementById("demo").innerHTML = tmp;
+
+		}
+	</script>
+
+</body>
+</html>

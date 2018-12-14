@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+
+<body>
+
+	<h1>JavaScript Events(자바스크립트 이벤트)</h1>
+
+	<!-- 사용자가 발생시키는 이벤트와 자바스크립트 함수에 대한 연결 -->
+	<!-- 버튼 객체 탐색을 위한 식별자 추가 필요 -->
+	<button id="btn01">함수호출</button>
+
+	<div id="demo"></div>
+
+	<script>
+		/* 
+		In HTML:
+		<element 이벤트핸들러="함수명()">
+		
+		In JavaScript:
+		object.이벤트핸들러 = 함수명;
+		object.이벤트핸들러 = function(){실행코드;};
+		
+		In JavaScript, using the addEventListener() method:
+		object.addEventListener("이벤트", 함수명);
+		object.addEventListener("이벤트", function(){실행코드;});
+		 */
+
+		//현재 페이지가 로드될 때 자동 실행되도록 함수 외부에 코드 작성
+		//이벤트 등록할 객체 탐색
+		document.getElementById("btn01").onclick = myFunction;
+
+		function myFunction() {
+
+			//메시지 박스 호출
+			window.alert("Hello, World!");
+
+		}
+
+		/*
+		 이렇게도 사용 가능 하다.
+		 document.getElementById("btn01").onclick = function() {
+
+		 //메시지 박스 호출
+		 window.alert("Hello, World!");
+
+		 };
+		 */
+	</script>
+</body>
+</html>

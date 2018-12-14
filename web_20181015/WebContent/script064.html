@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+
+<body>
+
+	<h1>JavaScript Events(자바스크립트 이벤트)</h1>
+
+	<button onclick="myFunction()">함수호출</button>
+
+	<div id="demo"></div>
+	
+	<script>
+		/* 
+		In HTML:
+		<element 이벤트핸들러="함수명()">
+		
+		In JavaScript:
+		object.이벤트핸들러 = 함수명;
+		object.이벤트핸들러 = function(){실행코드;};
+		
+		In JavaScript, using the addEventListener() method:
+		object.addEventListener("이벤트", 함수명);
+		object.addEventListener("이벤트", function(){실행코드;});
+		 */
+		 
+		 function myFunction() {
+			 
+			 //메시지 박스 호출
+			 window.alert("Hello, World!");			 
+	 
+		 }
+		 
+	</script>
+</body>
+</html>

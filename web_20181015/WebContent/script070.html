@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+
+<body>
+
+	<h1>String Object Method and Properties</h1>
+	
+	원본 문자열 : <input type="text" id = "name">
+	탐색 문자열 : <input type="text" id = "search">
+	<button onclick = "myFunction()">문자열 메소드 호출</button>
+	<div id="demo"></div>
+
+	<script>
+		/*
+		String Length
+		The length of a string is found in the built in property length:
+		- 문자열의 글자수 반환
+		 */
+		 
+		 function myFunction(){
+			var obj = document.getElementById("name");
+			var searchObj = document.getElementById("search");
+			var txt = "";
+			
+			txt += "value : " + obj.value + "<br>";
+			txt += "length : " + obj.value.length + "<br>";
+			txt += "indexOf() : " + obj.value.indexOf(searchObj.value) + "<br>";
+			
+			document.getElementById("demo").innerHTML = txt;
+		}
+	</script>
+</body>
+</html>
