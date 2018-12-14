@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+
+	<h1>JavaScript Arrays</h1>
+
+
+	<script>
+		/*
+		[문제]배열 저장소를 이용한 성적 처리
+		여러명의 사용자(5명)에 대한 성적들을 저장하고, 합, 평균 등을 계산하고, 출력.
+		사용자 한 명당 성적 1개 - 과목1에 대한 성적
+		성적은 난수(0~100)를 이용해서 얻는다.
+		실행예)
+		park -> ??
+		choi -> ??
+		hong -> ??
+		kim -> ??
+		lee -> ??
+		----------
+		합격자(60점 이상): 
+		XXX 
+		XXX 
+		XXX
+		불합격자(60점 미만):
+		XXX
+		XXX
+		 */
+
+		var scores = new Array();
+		var names = [ "park", "choi", "hong", "kim", "lee" ];
+		var success = "";
+		var fail = "";
+		var tmp = "";
+
+		for (var i = 0; i < names.length; i++) {
+			scores[i] = parseInt(Math.random() * 101);
+			tmp += names[i] + "->" + scores[i] + "\n";
+			if (scores[i] >= 60) {
+				success += names[i] + "\n";
+			} else {
+				fail += names[i] + "\n";
+			}
+		}
+
+		console.log(tmp + "----------\n합격자(60점 이상)\n" + success
+				+ "불합격자 (60점미만)\n" + fail);
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+
+	<h1>JavaScript Arrays</h1>
+
+
+	<script>
+		/*
+		JavaScript Arrays
+		JavaScript arrays are used to store multiple values in a single variable.
+		
+		형식1)
+		var array_name = [item1, item2, ...];   
+		
+		형식2)
+		var array_name = new Array();
+		array_name[인덱스] = 값;
+		
+		형식3)
+		var array_name = new Array(값1, 값2, 값3, ...);
+		
+		주의) 배열 객체 생성시 크기를 지정하지 않아도 된다. java에서의 ArrayList 컬렉션과 비슷하다.
+		 
+		*/
+	
+		// 배열 선언 및 초기화
+		var cars = ["Saab", "Volvo", "BMW"];
+		
+		console.log(cars);
+		console.log(cars.toString());
+		console.log(typeof cars);
+		
+		
+		var cars = new Array();
+		cars[0] = "Saab";
+		cars[1] = "BMW";
+		cars[2] = "Volvo";
+		console.log(cars);
+		console.log(cars.toString());
+		console.log(typeof cars);
+		
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+
+	<h1>JavaScript Sorting Arrays</h1>
+
+
+	<script>
+		// 배열의 배열 선언 및 초기화
+		var arr1 = [];
+		var n = 3;
+		var c = 0;
+		var t = "";
+		
+		for(var a = 0; a < n; ++a){
+			arr1[a] = [];
+			for(var b = 0; b < n; ++b){
+				arr1[a][b] = ++c;
+			}
+		}
+		for(var a = 0; a < n; ++a){
+			
+			for(var b = 0; b < n; ++b){
+				t += arr1[a][b] + " ";
+			}
+			t += "\n";
+		}
+		
+		console.log(t);
+	</script>
+
+</body>
+</html>

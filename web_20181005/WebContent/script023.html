@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+
+	<h1>JavaScript Sorting Arrays</h1>
+
+
+	<script>
+		/*
+		Sorting an Array
+		The sort() method sorts an array alphabetically:
+				
+		주의) sort() 메소드는 문자 기준으로 정렬한다.
+		
+		[문제] 로또 번호(1~45) 추출 및 출력. 중복 제외.
+		 1~45 범위의 숫자를 중복되지 않게 6개 추출
+		 출력시 정렬된 상태로 출력 -> sort(compare function) 메소드
+		
+		 */
+
+		var lotto = [];
+
+		var tmp;
+
+		for (var i = 0; i < 6;) {
+			tmp = parseInt(Math.random() * 46) + 1;
+
+			var b = true;
+
+			for (var j = 0; j < lotto.length; ++j) {
+				if (tmp == lotto[j]) {
+					b = false;ghj
+				}
+			}
+			if (b == true) {
+				lotto[i] = tmp;
+				++i;
+			}
+		}
+
+		lotto.sort(function(a, b) {
+			return a - b
+		});
+		console.log(lotto.toString());
+	</script>
+
+</body>
+</html>
