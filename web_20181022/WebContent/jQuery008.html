@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css" href="resources/style/style01.css">
+
+<style>
+</style>
+
+<!-- jQuery CDN -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+	/* 
+	jQuery Selectors (jQuery 선택자)
+	
+	jQuery selectors allow you to select and manipulate HTML element(s).
+	- jQuery 액션 실행을 위한 특정 엘리먼트 탐색\\
+	
+	형식)
+	$(선택자)
+	- 선택자에는 스크립트 내장 객체부터 특정 식별자를 가진 엘리먼트까지 가능.
+	- 예를 들어, $(document) 표현은 메모리에 로드된 HTML Document Object이다.
+	
+	*/
+
+	$(document).ready(function() {
+
+		//jQuery 표현
+		//주의) jQuery에는 name="" 속성 전용 식별자 표현은 없기 때문에 
+		//[속성이름="값"] 형태로 탐색 진행.
+		//eq(인덱스) 메소드는 특정 번째 객체 탐색시 사용
+		//attr("속성이름", "값") 메소드는 동적 속성 지정
+		$("[name='mode']").eq(1).attr("checked", "checked");
+		
+		//Javascript 표현
+		/*
+		var objs = document.getElementsByName("mode");
+		objs[1].checked = true;
+		*/
+		
+	});
+</script>
+
+</head>
+<body>
+
+	<h1>jQuery Selectors</h1>
+
+	<form action="" method="post">
+
+		아이디<br>
+		<input type="text"><br>
+		패스워드<br>
+		<input type="password"><br>
+		<input type="radio" name="mode" checked="checked"> 수강생 
+		<input type="radio" name="mode"> 강사 
+		<input type="radio" name="mode"> 관리자<br>
+		<input type="submit" value="로그인">
+		<br>
+		
+	</form>
+
+</body>
+</html>

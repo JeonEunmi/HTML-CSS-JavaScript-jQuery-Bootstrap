@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+<style>
+</style>
+<!-- jQuery CDN -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	/*
+	 jQuery Selectors (jQuery 선택자)
+	
+	 jQuery selectors allow you to select and manipulate HTML element(s).
+	 - jQuery 액션 실행을 위한 특정 엘리먼트 탐색
+	 
+	 형식)
+	 $(선택자)
+	 - 선택자에는 스크립트 내장 객체부터 특정 식별자를 가진 엘리먼트까지 가능
+	 
+	 The element Selector
+	 The jQuery element selector selects elements based on the element name.
+	 - 특정 엘리먼트 이름을 기준으로 객체 선택
+	 
+	 주의) 탐색된 객체가 복수개인 경우라도 액션 실행 가능. 자동 반복 실행.
+	 */
+	$(document).ready(function() {
+
+		// jQuery 표현
+		// 특정 엘리먼트(들) 탐색 및 스타일(배경색) 지정
+		//$("div").css("background-color", "tomato");
+		
+		//JavaScript 표현
+		var obj = document.getElementsByTagName("div");
+		
+		for(var a = 0; a < obj.length; ++a){
+			obj[a].style.backgroundColor = "tomato";
+		}
+			
+	});
+</script>
+</head>
+<body>
+	<h1>jQuery Selectors</h1>
+
+	<div id="demo" style="min-height: 100px;">토마토</div>
+	<div id="test" style="min-height: 100px;">토마토</div>
+
+
+
+
+</body>
+</html>

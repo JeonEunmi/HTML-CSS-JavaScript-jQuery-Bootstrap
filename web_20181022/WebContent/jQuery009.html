@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+<!-- jQuery CDN -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+	/* 
+	jQuery Selectors (jQuery 선택자)
+	
+	jQuery selectors allow you to select and manipulate HTML element(s).
+	- jQuery 액션 실행을 위한 특정 엘리먼트 탐색\\
+	
+	형식)
+	$(선택자)
+	- 선택자에는 스크립트 내장 객체부터 특정 식별자를 가진 엘리먼트까지 가능.
+	- 예를 들어, $(document) 표현은 메모리에 로드된 HTML Document Object이다.
+	
+	 */
+
+	$(document).ready(function() {
+
+		//jQuery 표현
+		$(".demo").first().html("Hello, World!");
+
+		//복수개 표현
+		//주의) 탐색된 객체가 복수개인 경우라도 자동 반복 가능
+		$(".demo").html("Hello, world!");
+
+		//Javascript 표현
+		document.querySelector(".demo").innerHTML = "Hello, World!";
+
+	});
+</script>
+
+</head>
+<body>
+
+	<h1>jQuery Selectors</h1>
+
+	<div class="demo"></div>
+	<div class="demo"></div>
+
+</body>
+</html>

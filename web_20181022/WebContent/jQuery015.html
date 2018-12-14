@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+<style>
+</style>
+<!-- jQuery CDN -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+
+		// <select> 태그에 대한 객체 탐색
+		// change 이벤트 등록
+		$("#changeBackgroundColor").change(function() {
+
+			// id = "demo" 식별자를 가진 객체 탐색
+			// 스타일 변경 -> value 속성의 값 확인 필요
+			// val() 메소드는 폼 구성 요소의 value 속성의 값을 확인
+			$("#demo").css("background-color", $(this).val());
+		});
+		// 스타일 변경 -> value 속성의 값 확인 필요 
+	});
+
+	/* function myFunction(obj) {
+		document.getElementById("demo").style.backgroundColor = obj.value;
+	} */
+</script>
+</head>
+<body>
+
+	<h1>jQuery Event Methods</h1>
+
+	<!-- jQuery -->
+	<!-- 현재 선택된 값을 변경하는 경우 change 이벤트 발생 -->
+	<div>
+		배경색 선택 : <select id="changeBackgroundColor">
+			<option value="white">White</option>
+			<option value="tomato">tomato</option>
+			<option value="orange">orange</option>
+		</select>
+	</div>
+
+	<div id="demo" style="min-height: 100px; background-color: white;"></div>
+
+</body>
+</html>

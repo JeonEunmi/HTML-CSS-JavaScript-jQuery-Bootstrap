@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css" href="resources/style/style01.css">
+
+<style>
+</style>
+
+<!-- jQuery CDN -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+	/* 
+	Changing HTML Elements
+	- jQuery 액션 실행을 통해서 HTML 엘리먼트의 콘텐츠, 속성값 등에 대한 동적 지정
+	
+	형식)
+	$(선택자).css("속성이름");
+	$(선택자).css("속성이름", "값");
+	$(선택자).css({"속성이름":"값", ...});
+
+	*/
+
+	$(document).ready(function() {
+
+		//jQuery 표현
+		$("#demo")
+			.html("<h1>Hello, World!</h1>")
+			.attr({"title":"Hello, World!"})
+			.css({"color":"red"});
+	
+		//Javascript 표현
+		/*
+	    var obj = document.getElementById(".demo")
+	    obj.innerHTML = "<h1>Hello, World!</h1>";
+		obj.setAttribute("title", "Hello, World!");
+		obj.style.color = "red";
+		*/
+		
+	});
+</script>
+
+</head>
+<body>
+
+	<h1>Changing HTML Elements</h1>
+
+	<div id="demo"></div>
+	<div id="test"></div>
+
+</body>
+</html>
