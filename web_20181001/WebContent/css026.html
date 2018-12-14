@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+/* 
+CSS Layout - The position Property
+
+The position Property
+The position property specifies the type of positioning method used for an element.
+There are five different position values:
+static
+relative
+fixed
+absolute
+sticky
+*/
+div#d01 {
+	position: absolute; /* 도큐먼트(부모) 기준 절대 위치 */
+	top: 170px; /* 위치에 영향을 받는다 */
+	left: 170px; /* 위치에 영향을 받는다 */
+	border: 3px solid #73AD21;
+	padding: 10px;
+	background-color: white;
+	z-index: 0; /* 순서 지정 */
+}
+
+div#d02 {
+	position: absolute; /* 도큐먼트(부모) 기준 절대 위치 */
+	top: 200px; /* 위치에 영향을 받는다 */
+	left: 200px; /* 위치에 영향을 받는다 */
+	border: 3px solid #73AD21;
+	padding: 10px;
+	background-color: #d9f2d9;
+	z-index: 1; /* 순서 지정 */
+}
+</style>
+
+</head>
+<body>
+	<h1>CSS Layout - The position Property</h1>
+
+	<p>When elements are positioned, they can overlap other elements.</p>
+
+	<p>The z-index property specifies the stack order of an element
+		(which element should be placed in front of, or behind, the others).</p>
+
+	<div id="d01">This div element has position: absolute;</div>
+	<div id="d02">This div element has position: absolute;</div>
+
+</body>
+</html>
