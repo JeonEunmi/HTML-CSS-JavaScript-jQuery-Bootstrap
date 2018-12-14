@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+	<h1>JavaScript Operators</h1>
+
+	<script>
+		/* 
+		 JavaScript Arithmetic Operators
+		 Arithmetic operators are used to perform arithmetic on numbers:
+
+		 JavaScript Assignment Operators
+		 Assignment operators assign values to JavaScript variables.
+
+		 JavaScript String Operators
+		 The + operator can also be used to add (concatenate) strings.
+
+		 JavaScript Comparison Operators
+
+		 JavaScript Logical Operators
+		 */
+
+		/* 
+		[문제]거스름돈 계산 및 출력
+		500원, 100원, 50원, 10원짜리 동전을 반환할 수 있는 계산식 작성.
+		예를 들어, 1500원인 경우 500원 3개, 100원 0개, 50원 0개, 10원 0개
+		예를 들어, 1400원인 경우 500원 2개, 100원 4개, 50원 0개, 10원 0개
+		 */
+
+		var a = 1460;
+		var b = 500;
+		var c = 100;
+		var d = 50;
+		var e = 10;
+
+		console.log(a);
+		console.log("500원 " + parseInt(a / b) + "개");
+		console.log("100원 " + parseInt(a % b / c) + "개");
+		console.log("50원 " + parseInt(a % c / d) + "개");
+		console.log("10원 " + parseInt(a % d / e) + "개");
+	</script>
+</body>
+</html>
