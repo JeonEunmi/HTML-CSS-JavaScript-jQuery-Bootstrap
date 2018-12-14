@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+</style>
+
+<!-- External JavaScript -->
+<script src="resources/script/util.js">
+	
+</script>
+
+</head>
+<body>
+
+	<h1>JavaScript Object(사용자 정의 객체)</h1>
+	<button onclick="myFunction()">사용자 정의 객체</button>
+	<div id="demo"></div>
+
+	<script>
+		/*
+		문제)
+		보드마카를 JavaScript Object로 표현하는 코드 작성
+		보드마카의 특성(프로퍼티, 메소드) 분석하고, JavaScript Object 표현
+		 */
+
+		function myFunction(obj) {
+
+			var boardMarker = {
+				name : "monami",
+				model : 800,
+				thickness : 2,
+				color : ["red", "blue", "black"]
+			};	
+			
+			var txt = "";
+			
+			txt += "Object: " + boardMarker + "<br>";
+			txt += "name: " + boardMarker.name + "<br>";
+			txt += "model: " + boardMarker.model + "<br>";
+			txt += "weight: " + boardMarker.thickness + "<br>";
+			txt += "color: " + boardMarker["color"] + "<br>";
+
+			document.getElementById("demo").innerHTML = txt;
+
+		}
+	</script>
+</body>
+</html>

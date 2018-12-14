@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+</style>
+
+<!-- External JavaScript -->
+<script src="resources/script/util.js">
+	
+</script>
+
+</head>
+<body>
+
+<h1>JavaScript Object(사용자 정의 객체)</h1>
+	<button onclick="myFunction()">사용자 정의 객체</button>
+	<div id="demo"></div>
+
+	<script>
+		/*
+		JavaScript Objects(사용자 정의 객체)
+		
+		형식)
+		var 변수 = {
+				
+				키 : 값,
+				키 : function(){
+					액션코드;
+				}
+		};
+		
+		변수.키1;
+		변수.키2();
+		
+		 */
+
+		function myFunction(obj) {
+
+			//홍길동의 개인정보 저장용 사용자 정의
+			var hong = {
+					name : "홍길동",
+					phone : "010-1234-1234"
+			};
+			
+			var txt = "";
+			
+			// 사용자 정의 객체의 프로퍼티에 의한 접근 방법
+			// 변수.프로퍼티명
+			// 변수[프로퍼티명]
+			txt += "name: " + hong.name + "<br>";
+			txt += "phone: " + hong["phone"] + "<br>";
+
+			document.getElementById("demo").innerHTML = txt;
+
+		}
+	</script>
+
+</body>
+</html>

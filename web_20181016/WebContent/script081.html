@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+	<!-- 
+	원본 자료:
+	<input type="text" id="a" value=""> -->
+	<button onclick="myFunction()">날짜 메소드 호출</button>
+	<div id="demo"></div>
+
+
+	<script>
+		/*
+		 Date Object Method and Properties
+		
+		 new Date() creates a new date object with the current date and time:
+		- 날짜 객체 반환. 시스팀의 오늘 날짜, 시간 기준
+
+		The getFullYear() method returns the year of a date as a four digit number:
+		- 날짜 정보에서 년도 부분 반환
+		
+		The getMonth() method returns the month of a date as a number (0-11):
+		- 날짜 정보에서 월 부분 반환. 실제 출력시 +1 필요
+		
+		The getDate() method returns the day of a date as a number (1-31):	
+		- 날짜 정보에서 일 부분 반환
+		
+		The getDay() method returns the weekday of a date as a number (0-6):
+		- 날짜 정보에서 요일 부분 반환 (인덱스로 반환)
+		*/
+
+		function myFunction() {
+
+			var txt = "";
+			var d = new Date();
+			var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+			txt += "new Date(): " + d + "<br>";
+			txt += "getFullYear(): " + d.getFullYear() + "<br>";
+			txt += "getMonth(): " + d.getMonth() + "<br>";
+			txt += "getDate(): " + d.getDate() + "<br>";
+			txt += "ISO format(): " + (d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate()) + "<br>";
+			txt += "getDay(): " + days[d.getDay()] + "<br>";			
+
+			document.getElementById("demo").innerHTML = txt;
+
+		}
+	</script>
+
+</body>
+</html>

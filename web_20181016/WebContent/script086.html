@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+</style>
+
+<!-- External JavaScript -->
+<script src="resources/script/util.js">
+	
+</script>
+
+</head>
+<body>
+
+	<button onclick="myFunction(this)" value="0">가위</button>
+	<button onclick="myFunction(this)" value="1">바위</button>
+	<button onclick="myFunction(this)" value="2">보</button>
+	<div id="demo"></div>
+
+	<script>
+		/*
+		1회: 사용자:가위, 컴퓨터:바위 -> 컴퓨터 승!
+		2회: 사용자:가위, 컴퓨터:바위 -> 컴퓨터 승!
+		3회: 사용자:바위, 컴퓨터:가위 -> 사용자 승!
+
+		가위 0 : 바위 1 : 보 2
+		 */
+
+		function myFunction(obj) {
+
+			var arr = ["가위", "바위", "보"];
+			var com = parseInt((Math.random() * 3));
+
+			var result = "";
+			
+			var user = obj.value;
+
+			var cha = com - user;
+						
+			if (cha == 0) {
+				result = "무승부";
+			} else {
+				if (cha == 1 || cha == -2) {
+					result = "com win!";
+				} else {
+					result = "user win!";
+				}
+
+				if (cha == -1 || cha == 2) {
+					result = "user win!";
+				} else {
+					result = "com win!";
+				}
+
+			}
+			
+
+			document.getElementById("demo").innerHTML = "결과: " + result;
+			document.getElementById("demo1").innerHTML = "컴퓨터: " +arr[com];
+			document.getElementById("demo2").innerHTML = "나 : " + arr[user];
+
+		}
+	</script>
+
+</body>
+</html>

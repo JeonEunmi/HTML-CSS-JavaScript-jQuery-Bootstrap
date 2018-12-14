@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+</style>
+
+<!-- External JavaScript -->
+<script src="resources/script/util.js">
+	
+</script>
+
+</head>
+<body>
+
+	<h1>JavaScript Object(사용자 정의 객체)</h1>
+	<button onclick="myFunction()">사용자 정의 객체</button>
+	<div id="demo"></div>
+
+	<script>
+		/*
+		JavaScript Objects(사용자 정의 객체)
+		
+		형식)
+		var 변수 = {
+				
+				키 : 값,
+				키 : function(){
+					액션코드;
+				}
+		};
+		
+		변수.키1;
+		변수.키2();
+		
+		 */
+
+		function myFunction(obj) {
+
+			var car = {
+				name : "Fiat",
+				model : 500,
+				weight : 850,
+				color : "white"
+			};
+			
+			var txt = "";
+			
+			txt += "Object: " + car + "<br>";
+			txt += "name: " + car.name + "<br>";
+			txt += "model: " + car.model + "<br>";
+			txt += "weight: " + car.weight + "<br>";
+			txt += "color: " + car.color + "<br>";
+
+			document.getElementById("demo").innerHTML = txt;
+
+		}
+	</script>
+</body>
+</html>

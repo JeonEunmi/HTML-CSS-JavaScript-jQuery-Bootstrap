@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+	
+	특정 날짜 정보:
+	<input type="text" id="a" value="">
+	<button onclick="myFunction()">날짜 메소드 호출</button>
+	<div id="demo"></div>
+
+	<!-- External JavaScript -->
+	<script src = "resources/script/util.js"> </script>
+	<script>
+		/*
+
+		*/
+
+		function myFunction() {
+
+			var txt = "";
+			
+			var a = document.getElementById("a");
+			
+			var d = new Date();
+			
+
+			txt += "날짜와 날짜 사이의 간격(day): " + dDay("2019-01-17") + "<br>";
+			
+			document.getElementById("demo").innerHTML = txt;
+
+		}
+	</script>
+
+</body>
+</html>

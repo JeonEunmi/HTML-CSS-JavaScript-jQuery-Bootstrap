@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+</style>
+
+<!-- External JavaScript -->
+<script src="resources/script/util.js"> </script>
+
+</head>
+<body>
+
+
+	숫자1: <input type="text" id="a" value="">
+	숫자2: <input type="text" id="b" value="">
+	<button onclick="myFunction()">숫자 메소드 호출</button>
+	<div id="demo"></div>
+
+	<script>
+		/*
+		Math Object Method and Properties
+		
+		Math.PI
+		- 3.141592 반환
+		
+		Math.round(x) returns the value of x rounded to its nearest integer:
+		- 특정 숫자에 대해서 반올림 처리
+		
+		Math.pow(x, y) returns the value of x to the power of y:
+		- 특정 숫자에 대해서 지수승 처리
+		
+		Math.random() returns a random number between 0 (inclusive), and 1 (exclusive):
+		- 0부터 1사이의 난수 반환
+			 
+		Math.floor(x) returns the value of x rounded down to its nearest integer:
+		- 가장 가까운 정수 반환. 작은쪽 정수.	 
+
+		Math.ceil(x) returns the value of x rounded up to its nearest integer:
+		- 가장 가까운 정수 반환. 큰쪽 정수.
+
+		 */
+
+
+		function myFunction() {
+			
+			var a = document.getElementById("a");
+			var b = document.getElementById("b");
+			
+			var txt = "";
+			txt += "Math.round(x): " + Math.round(a.value) + "<br>";
+			txt += "Math.pow(x,y): " + Math.pow(a.value, b.value) + "<br>";
+			txt += "Math.random():" + Math.random() + "<br>";
+			txt += "Math.floor(x):" + Math.floor(a.value) + "<br>";
+			txt += "Math.ceil(x):" + Math.ceil(a.value) + "<br>";
+
+			document.getElementById("demo").innerHTML = txt;
+
+		}
+	</script>
+
+</body>
+</html>

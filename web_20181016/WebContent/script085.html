@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+</style>
+
+<!-- External JavaScript -->
+<script src="resources/script/util.js"> </script>
+
+</head>
+<body>
+
+	이름
+	<input type="text" id="name" value=""> 전화번호
+	<input type="text" id="phone" value=""> 생년월일
+	<input type="date" id="birth" value="">
+	<button onclick="myFunction()">날짜 메소드 호출</button>
+	<div id="demo"></div>
+
+	<script>
+		/*
+
+		 */
+
+		var tmp = "";
+
+		function myFunction() {
+			var d = new Date();
+			var txt = "";
+			var name = document.getElementById("name").value;
+
+			txt += "오늘날짜 : " + today() + "<br>";
+			txt += "<table><tbody>";
+			txt += "<tr><th>이름</th><th>전화번호</th>";
+			txt += "<th>생년월일</th><th>남은날짜</th>";
+
+			tmp += "<tr><th>" + name + "</th><th>" + phone.value + "</th>";
+			tmp += "<th>" + birth.value + "</th><th>" + dDay(birth.value)
+					+ "</th><tr>";
+
+			txt += tmp;
+			txt += "</tbody></table>";
+
+			document.getElementById("demo").innerHTML = txt;
+
+		}
+	</script>
+
+</body>
+</html>

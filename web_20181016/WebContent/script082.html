@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+	
+	특정 날짜 정보:
+	<input type="text" id="a" value="">
+	<button onclick="myFunction()">날짜 메소드 호출</button>
+	<div id="demo"></div>
+
+	<script>
+		/*
+
+		*/
+
+		function myFunction() {
+
+			var txt = "";
+			
+			var a = document.getElementById("a");
+			
+			var d = new Date();
+			
+			// 또다른 날짜 객체 생성
+			var someday = new Date(a.value);
+			
+			var b = Math.floor((d - someday)/1000/60/60/24);
+			
+			
+		
+			txt += "new Date():" + d + "<br>";
+			
+			txt += "new Date(사용자정의날짜): " + someday + "<br>";
+			
+			txt += "날짜와 날짜 사이의 간격(millisecond): " + (d - someday) + "<br>";
+
+			txt += "날짜와 날짜 사이의 간격(day): " + ((b>0)?"+"+b:b) + "<br>";
+			
+			document.getElementById("demo").innerHTML = txt;
+
+		}
+	</script>
+
+</body>
+</html>
