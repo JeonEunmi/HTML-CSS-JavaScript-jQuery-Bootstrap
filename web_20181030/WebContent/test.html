@@ -1,0 +1,319 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>쌍용교육센터</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- External JavaScript -->
+<script src="resources/script/util.js"></script>
+<script>
+	var visitorBook = [];
+	var idx = 0;
+
+	//사용자 정의 객체 선언
+	function VisitorBook(gid, name, pw, content, date) {
+		this.gid = gid;
+		this.name = name;
+		this.pw = pw;
+		this.content = content;
+		this.date = date;
+	}
+
+	//초기화 함수
+	function init() {
+		visitorBook.push(new VisitorBook(autoGid(), "hong", "1234", "테스트1",
+				"2018-10-11"));
+		visitorBook.push(new VisitorBook(autoGid(), "park", "0000", "테스트2",
+				"2017-08-31"));
+	}
+
+	$(document).ready(function() {
+
+		$('[data-toggle="modal"]').tooltip();
+
+	});
+
+	//번호 자동 생성 함수
+	function autoGid() {
+		++idx;
+		var gid = "G" + ((idx < 10) ? "00" + idx : "0" + idx);
+		return gid;
+	}
+
+	$(document)
+			.ready(
+					function() {
+
+						//초기화 함수 호출
+						init();
+
+						//출력 전용 함수 호출
+						print(visitorBook);
+						$("#btnAdd")
+								.on(
+										"click",
+										function() {
+											//고유번호 생성
+											var gid = autoGid();
+											var name = $("#name").val();
+											var pw = $("#pw").val();
+											var content = $("#content").val();
+											var date = today();
+											//visitorBook 객체 생성
+											var book = new VisitorBook(gid,
+													name, pw, content, date);
+											//저장소에 저장
+											visitorBook.push(book);
+											//출력 전용 함수 호출
+											var arr = [];
+											arr = search("all", "");
+											print(arr);
+
+											//추가 액션 성공 메시지 출력
+											$("#name").val("");
+											$("#pw").val("");
+											$("#content").val("");
+											$("#date").val("");
+											$(this)
+													.parent()
+													.append(
+															"<div class=\"alert alert-success alert-dismissible fade in\" style=\"display: inline-block; padding-top: 5px; padding-bottom: 5px; margin: 0px;\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><strong>Success!</strong> 요청한 작업이 처리되었습니다.</div>");
+
+										});
+
+						//개인정보 삭제 버튼에 대한 동적 이벤트 등록
+						$(document).on("click", ".btnDel", function() {
+							/* if (confirm("현재 자료를 삭제할까요?")) {
+								visitorBook.splice($(this).val(), 1);
+								var arr = [];
+								arr = search("all", "");
+								print(arr);
+
+								//삭제 액션 성공 메시지 출력
+
+							} */
+
+							$(document).on("click", "#btnDelete", function() {
+
+								var pw = $("#pass").val();
+								console.log($("#gid"));
+								//if($(this).val())
+							})
+
+						});
+
+						$(document).on("click", "#btnSearch", function() {
+							var key = $("#key").val();
+							var value = $("#value").val();
+
+							var arr = search(key, value);
+							print(arr);
+						});
+
+					});
+
+	//출력 전용 함수
+	function print(array) {
+		var tbody = $("<tbody></tbody>");
+		$(tbody)
+				.append(
+						"<tr><th>번호</th><th>글쓴이</th><th>글내용</th><th>작성일</th><th></th></tr>");
+		var count = visitorBook.length;
+		var count2 = 0;
+		for (var a = 0; a < array.length; ++a) {
+			var m = array[a];
+			var tr = $("<tr></tr>");
+			var gid = $("<td></td>").text(m.gid);
+			var name = $("<td></td>").text(m.name);
+			var content = $("<td></td>").text(m.content);
+			var date = $("<td></td>").text(m.date);
+			var td = $("<td></td>");
+
+			var buttonDel = $("<button class=\"btn btn-default btn-xs btnDel\" data-toggle=\"modal\" data-target=\"#myModal\" title=\"패스워드 확인 과정이 필요합니다.\">삭제</button>");
+			$(buttonDel).attr("value", a);
+			$(td).append(buttonDel);
+
+			$(tr).append(gid, name, content, date, td);
+			$(tbody).append(tr);
+
+			++count2;
+		}
+		$("#guestbook").html(tbody);
+		$("#totalcount").html(count);
+		$("#count").html(count2);
+	}
+
+	function search(value2, search) {
+
+		var brr = [];
+
+		for (var a = 0; a < visitorBook.length; a++) {
+
+			var temp = visitorBook[a];
+
+			if (value2 == "gid" && temp.gid == search) {
+				brr.push(temp);
+			}
+
+			if (value2 == "name" && temp.name == search) {
+				brr.push(temp);
+			}
+
+			if (value2 == "content" && temp.content == search) {
+				brr.push(temp);
+			}
+
+			if (value2 == "date" && temp.date == search) {
+				brr.push(temp);
+			}
+
+			if (value2 == "all") {
+				brr.push(temp);
+			}
+
+		}
+
+		return brr;
+
+	}
+</script>
+
+</head>
+<body>
+
+	<div class="container">
+
+		<div class="panel page-header" style="text-align: center;">
+			<h1 style="font-size: xx-large;">
+				<a href="boot024.html"> <img src="resources/image/sist_logo.png"
+					alt="sist_logo.png"></a> 방명록 <small>v1.0</small>
+			</h1>
+		</div>
+
+		<div class="panel panel-default" id="input">
+			<div class="panel-heading">글쓰기</div>
+			<div class="panel-body">
+
+				<form action="" method="post">
+					<div class="form-group">
+						<label for="name">Name:</label> <input type="text"
+							class="form-control" id="name" name="name" placeholder="Max 50"
+							required>
+					</div>
+					<div class="form-group">
+						<label for="pw">PW:</label> <input type="pw" class="form-control"
+							id="pw" name="pw" placeholder="Max 50" required>
+					</div>
+					<div class="form-group">
+						<label for="content">Content:</label> <input type="text"
+							class="form-control" id="content" name="content"
+							placeholder="Max 500" required>
+					</div>
+
+					<button type="button" class="btn btn-default" id="btnAdd">글쓰기</button>
+
+				</form>
+
+			</div>
+		</div>
+
+		<div class="panel panel-default" id="output">
+			<div class="panel-heading">글목록</div>
+			<div class="panel-body">
+
+				<table id="guestbook" class="table">
+
+
+				</table>
+
+
+				<form class="form-inline" method="post">
+					<div class="form-group">
+						<!-- 전체 자료 갯수 -->
+						<button type="button" class="btn btn-default">
+							TotalCount <span class="badge" id="totalcount">1</span>
+						</button>
+						<!-- 검색 결과 자료 갯수 -->
+						<button type="button" class="btn btn-default">
+							Count <span class="badge" id="count">1</span>
+						</button>
+						<!-- 검색 기준 선택 항목 -->
+						<select class="form-control" id="key" name="key">
+							<option value="gid">Gid</option>
+							<option value="name">Name</option>
+							<option value="content">Content</option>
+							<option value="regDate">RegDate</option>
+						</select>
+					</div>
+					<div class="input-group">
+						<!-- 검색 단어 입력 폼 -->
+						<input type="text" class="form-control" id="value" name="value"
+							placeholder="Search">
+						<div class="input-group-btn">
+							<!-- 검색 진행 버튼 -->
+							<button type="button" class="btn btn-default" id="btnSearch">
+								<i class="glyphicon glyphicon-search"></i>
+							</button>
+						</div>
+					</div>
+
+				</form>
+
+			</div>
+		</div>
+
+	</div>
+
+
+	<!-- Modal -->
+	<div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">방명록 삭제</h4>
+				</div>
+				<div class="modal-body">
+
+					<form action="" method="post">
+
+						<div class="form-group">
+							<label for="pass">PW:</label> <input type="password"
+								class="form-control" id="pass" name="pass" placeholder="Max 50"
+								required>
+							<!-- 인덱스 저장용 -->
+							<input type="hidden" id="gid" value="값">
+						</div>
+
+						<button type="button" class="btn btn-default" id="btnDelete"
+							data-dismiss="modal">삭제</button>
+
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</body>
+</html>

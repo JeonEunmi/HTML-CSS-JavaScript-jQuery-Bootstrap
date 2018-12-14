@@ -1,0 +1,315 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>쌍용교육센터</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+	//배열 저장소
+	var members = [];
+	var idx = 0;
+
+	//사용자 정의 객체 선언
+	function Member(mid, name, phone, regDate, dept) {
+		this.mid = mid;
+		this.name = name;
+		this.phone = phone;
+		this.regDate = regDate;
+		this.dept = dept;
+	}
+
+	//초기화 함수
+	function init() {
+		members.push(new Member(autoMid(), "hong", "010-1234-1234",
+				"2011-02-15", "개발부"));
+		members.push(new Member(autoMid(), "park", "010-3456-3456",
+				"2017-04-02", "마케팅부"));
+	}
+
+	//번호 자동 생성 함수
+	function autoMid() {
+		++idx;
+		var mid = "M" + ((idx < 10) ? "0" + idx : idx);
+		return mid;
+	}
+
+	$(document)
+			.ready(
+					function() {
+
+						//초기화 함수 호출
+						init();
+
+						//출력 전용 함수 호출
+						print(members);
+
+						//회원정보 추가(또는 수정) 버튼에 대한 이벤트 처리
+						//->개인정보 삭제 버튼에 대한 동적 이벤트 처리 필요
+						$("#btnAdd")
+								.on(
+										"click",
+										function() {
+											//고유번호 생성
+											var mid = autoMid();
+											//이름 정보 확인
+											var name = $("#name").val();
+											//전화번호 정보 확인
+											var phone = $("#phone").val();
+											var regDate = $("#regDate").val();
+											var dept = $("#dept").val();
+											//Member 객체 생성
+											var member = new Member(mid, name,
+													phone, regDate, dept);
+											//저장소에 저장
+											members.push(member);
+											//출력 전용 함수 호출
+											var arr = [];
+											arr = search02("all", "");
+											print(arr);
+
+											//추가 액션 성공 메시지 출력
+											$("#name").val("");
+											$("#phone").val("");
+											$("#regDate").val("");
+											// <select> 태그에서 특정 번째 <option> 태그를 기본 선택
+											$("#dept option:eq(0)").attr("selected", "selected");
+											$(this)
+													.parent()
+													.append(
+															"<div class=\"alert alert-success alert-dismissible fade in\" style=\"display: inline-block; padding-top: 5px; padding-bottom: 5px; margin: 0px;\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><strong>Success!</strong> 요청한 작업이 처리되었습니다.</div>");
+
+										});
+
+						//개인정보 삭제 버튼에 대한 동적 이벤트 등록
+						$(document).on("click", ".btnDel", function() {
+							if (confirm("현재 자료를 삭제할까요?")) {
+								members.splice($(this).val(), 1);
+								var arr = [];
+								arr = search02("all", "");
+								print(arr);
+
+								//삭제 액션 성공 메시지 출력
+
+							}
+						});
+
+						$(document).on("click", ".search", function() {
+							var key = $("#key").val();
+							var value = $("#value").val();
+							
+							var arr = search02(key, value);
+							print(arr);
+						});
+
+					});
+
+	//출력 전용 함수
+	function print(array) {
+		var tbody = $("<tbody></tbody>");
+		$(tbody)
+				.append(
+						"<tr><th>Mid</th><th>Name</th><th>Phone</th><th>regDate</th><th>dept</th><th></th></tr>");
+		var count = members.length;
+		var count2 = 0;
+		//var count2 = array.length;
+		for (var a = 0; a < array.length; ++a) {
+			var m = array[a];
+/* 
+			if (m != undefined) {
+ */
+				var tr = $("<tr></tr>");
+				var mid = $("<td></td>").text(m.mid);
+				var name = $("<td></td>").text(m.name);
+				var phone = $("<td></td>").text(m.phone);
+				var regDate = $("<td></td>").text(m.regDate);
+				var dept = $("<td></td>").text(m.dept);
+				var td = $("<td></td>");
+
+				var buttonDel = $("<button class=\"btn btn-default btn-xs btnDel\">개인정보 삭제</button>");
+				$(buttonDel).attr("value", a);
+				$(td).append(buttonDel);
+
+				$(tr).append(mid, name, phone, regDate, dept, td);
+				$(tbody).append(tr);
+
+				++count2;
+			}
+		//}
+		$("#members").html(tbody);
+		$("#totalcount").html(count);
+		$("#searchcount").html(count2);
+	}
+
+	//검색/* 
+	/*
+	function search01() {
+
+		var txt = "";
+
+		var brr = [];
+
+		var value2 = "";
+
+		var key = document.getElementById("key");
+
+		for (var a = 0; a < key.length; a++) {
+			if (key[a].selected) {
+				value2 = key[a].value;
+			}
+		}
+
+		var search = document.getElementById("value").value;
+
+		brr = search02(value2, search);
+
+		return brr;
+
+	}
+ */
+	//검색
+	function search02(value2, search) {
+
+		var brr = [];
+
+		for (var a = 0; a < members.length; a++) {
+
+			var temp = members[a];
+
+			if (value2 == "mid" && temp.mid == search) {
+				brr.push(temp);
+			}
+
+			if (value2 == "name" && temp.name == search) {
+				brr.push(temp);
+			}
+
+			if (value2 == "phone" && temp.phone.match(search)) {
+				brr.push(temp);
+			}
+
+			if (value2 == "regDate" && temp.regDate == search) {
+				brr.push(temp);
+			}
+
+			if (value2 == "dept" && temp.dept == search) {
+				brr.push(temp);
+			}
+
+			if (value2 == "all") {
+				brr.push(temp);
+			}
+
+		}
+
+		return brr;
+
+	}
+</script>
+
+</head>
+<body>
+
+	<div class="container">
+
+		<div class="panel page-header" style="text-align: center;">
+			<h1 style="font-size: xx-large;">
+				<a href="boot021.html"> <img src="resources/image/sist_logo.png"
+					alt="sist_logo.png"></a> 회원관리 <small>v4.7</small>
+			</h1>
+		</div>
+
+		<div class="panel panel-default" id="input">
+			<div class="panel-heading">회원 추가</div>
+			<div class="panel-body">
+
+				<form action="" method="post">
+					<div class="form-group">
+						<label for="name">Name:</label> <input type="text"
+							class="form-control" id="name" name="name" placeholder="max 20"
+							required>
+					</div>
+					<div class="form-group">
+						<label for="phone">Phone:</label> <input type="text"
+							class="form-control" id="phone" name="phone" placeholder="max 20"
+							required>
+					</div>
+					<div class="form-group">
+						<label for="regDate">RegDate:</label> <input type="date"
+							class="form-control" id="regDate" name="regDate" required>
+					</div>
+					<div class="form-group">
+						<label for="dept">Dept:</label> <select class="form-control"
+							id="dept" name="dept">
+							<option value="개발부">개발부</option>
+							<option value="마케팅부">마케팅부</option>
+							<option value="영업부">영업부</option>
+						</select>
+					</div>
+
+					<button type="button" class="btn btn-default" id="btnAdd">회원정보
+						추가</button>
+
+				</form>
+
+			</div>
+		</div>
+
+		<div class="panel panel-default" id="output">
+			<div class="panel-heading">회원 목록</div>
+			<div class="panel-body" id="demo">
+				<table id="members" class="table"></table>
+
+
+				<form class="form-inline" method="post">
+					<div class="form-group">
+						<!-- 전체 자료 갯수 -->
+						<button class="btn btn-default">
+							TotalCount <span class="badge" id="totalcount">4</span>
+						</button>
+						<!-- 검색 결과 자료 갯수 -->
+						<button type="button" class="btn btn-default">
+							Count <span class="badge" id="searchcount">0</span>
+						</button>
+						<!-- 검색 기준 선택 항목 -->
+						<select class="form-control" id="key" name="key">
+							<option value="mid">Mid</option>
+							<option value="name">Name</option>
+							<option value="phone">Phone</option>
+							<option value="regDate">RegDate</option>
+							<option value="dept">Dept</option>
+						</select>
+					</div>
+					<div class="input-group">
+						<!-- 검색 단어 입력 폼 -->
+						<input type="text" class="form-control" id="value" name="value"
+							placeholder="Search">
+						<div class="input-group-btn">
+							<!-- 검색 진행 버튼 -->
+							<button class="btn btn-default search" type="button">
+								<i class="glyphicon glyphicon-search"></i>
+							</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>
