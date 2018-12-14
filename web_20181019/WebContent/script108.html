@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+	<h1>The Browser Object Model (BOM)</h1>
+
+	<script>
+		/* 
+		 The Browser Object Model (BOM)
+		
+		 - 자바스크립트가 실행되고 있는 브라우저, 모니터를 객체로 다루는 방법
+		 - 브라우저의 정보를 프로그램의 대상으로 처리할 수 있다.
+		 - 주의) 일부 정보는 읽기 전용이다.
+		 
+		 The window.location object can be written without the window prefix.
+		 - 브라우저의 주소 정보를 관리하는 객체
+		 
+		 window.location.href returns the href (URL) of the current page
+		 window.location.hostname returns the domain name of the web host
+		 window.location.pathname returns the path and filename of the current page
+		 window.location.protocol returns the web protocol used (http: or https:)
+		 
+		 - 페이지 전환 메소드
+		 window.location.assign loads a new document
+		 
+		 */
+
+		//페이지 전환
+		location.assign("https://www.w3schools.com");
+		 
+	</script>
+</body>
+</html>

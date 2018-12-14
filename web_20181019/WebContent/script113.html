@@ -1,0 +1,67 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>yong</title>
+<style>
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+div.input {
+	margin-bottom: 10px;
+	padding: 10px;
+	border: 1px solid #e5e5e5;
+}
+</style>
+</head>
+
+<body>
+	<h3>The Browser Object Model(BOM)</h3>
+
+	<button onclick="myFunction()">타이머 시작</button>
+	<button onclick="timer_stop()">타이머 종료</button>
+	<div id="demo"></div>
+
+	<script>
+		function myFunction() {
+			tcounter = 600;
+			t1 = setInterval(Timer, 1000);
+		}
+
+		function Timer() {
+			tcounter--
+			temp = Math.floor(tcounter / 60);
+			if (temp < 10) {
+				temp = "0" + temp;
+			}
+			temp += ":";
+			if ((tcounter % 60) < 10) {
+				temp = temp + "0";
+			}
+			temp = temp + (tcounter % 60);
+			document.getElementById("demo").innerHTML = temp;
+			if (tcounter == 0) {
+				timer_stop();
+			}
+
+		}
+
+		function timer_stop() {
+			clearTimeout(t1)
+		}
+	</script>
+
+
+
+</body>
+</html>

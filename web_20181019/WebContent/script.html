@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+<
+style>table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+div.input {
+	margin-bottom: 10px;
+	padding: 10px;
+	border: 1px solid #e5e5e5;
+}
+</style>
+
+<!-- External JavaScript -->
+<script src="resources/script/util.js"></script>
+
+</head>
+<body>
+
+	<h1>** 일정관리 v2.0 **</h1>
+	<div class="input">
+
+		날짜> <input type="date" id="date"> 내용> <input type="text"
+			id="contents">
+		<button onclick="myFunction01()">일정 추가 버튼</button>
+	</div>
+
+	<div class="input">
+		오늘 일정<input type="radio" name="searchKey" value="today" checked>
+		특정 일 일정<input type="radio" name="searchKey" value="day"> 특정 월
+		일정<input type="radio" name="searchKey" value="month"> 특정 단어 포함
+		일정<input type="radio" name="searchKey" value="word"> 전체 일정<input
+			type="radio" name="searchKey" value="all"> <br> 검색> <input
+			type="text" id="search">
+		<button onclick="myFunction03()">일정 출력 버튼</button>
+	</div>
+
+	<div id="demo"></div>
+
+	<script>
+		var scheduleArray = [];
+
+		//입력
+		function myFunction01() {
+
+			var s = "";
+
+			s = scheduleArray.length + 1 >= 10 ? "S0" : "S00";
+
+			var sid = s + (scheduleArray.length + 1);
+			var date = document.getElementById("date").value;
+			var contents = document.getElementById("contents").value;
+
+			var schedule = new Schedule(sid, date, contents);
+
+			scheduleArray.push(schedule);
+
+			document.getElementById("demo").innerHTML = "일정이 등록되었습니다.";
+
+		}
+
+		//출력
+		function myFunction02(array) {
+
+			var txt = "";
+
+			txt += "<div>" + "총 : " + array.length + " 건" + "</div>"
+
+			txt += "<table><tbody>";
+			txt += "<tr><th>번호</th><th>날짜</th><th>남은 날짜</th>";
+			txt += "<th>내용</th></tr>";
+
+			for (var i = 0; i < array.length; i++) {
+				var t = array[i];
+				txt += "<tr><th>" + t.sid + "</th><th>" + t.date + "</th><th>"
+						+ t.dDay(t.date) + "</th><th>" + t.contents
+						+ "</th></tr>";
+
+			}
+
+			txt += "</tbody></table>";
+
+			document.getElementById("demo").innerHTML = txt;
+		}
+
+		//검색
+		function myFunction03() {
+
+			var txt = "";
+
+			var brr = [];
+
+			var value2 = "";
+
+			var key = document.getElementsByName("searchKey");
+
+			for (var a = 0; a < key.length; a++) {
+				if (key[a].checked) {
+					value2 = key[a].value;
+				}
+			}
+
+			var search = document.getElementById("search").value;
+
+			brr = myFunction04(value2, search);
+
+			if (brr.length == 0) {
+				txt += "일치하는 검색결과가 없습니다!";
+				document.getElementById("demo").innerHTML = txt; 
+			} else {
+				myFunction02(brr);
+
+			}
+
+		}
+
+		//검색
+		function myFunction04(value2, search) {
+
+			var brr = [];
+
+			var today = toDay();
+
+			for (var a = 0; a < scheduleArray.length; a++) {
+
+				var temp = scheduleArray[a];
+
+				if (value2 == "day" && temp.date == search) {
+					brr.push(temp);
+				}
+
+				if (value2 == "today" && temp.date == today) {
+					brr.push(temp);
+				}
+
+				if (value2 == "month" && temp.date.getMonth == search) {
+					brr.push(temp);
+				}
+
+				if (value2 == "word" && temp.contents == search) {
+					brr.push(temp);
+				}
+
+				if (value2 == "all") {
+					brr.push(temp);
+				}
+			}
+
+			return brr;
+
+		}
+		function Schedule(sid, date, contents) {
+
+			this.sid = sid;
+			this.date = date;
+			this.contents = contents;
+			this.dDay = function(date) {
+				var d = dDay(date);
+				return d;
+			};
+
+		}
+	</script>
+</body>
+</html>

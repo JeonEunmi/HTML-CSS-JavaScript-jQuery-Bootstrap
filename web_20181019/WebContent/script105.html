@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+	<h1>JavaScript Object(사용자 정의 객체)</h1>
+
+	<div>
+		<!-- 		이름 <input type="text" id="name"> 전화번호 <input type="text"
+			id="phone"> -->
+		<button onclick="myFunction()">Person 객체 생성</button>
+	</div>
+	<div id="demo"></div>
+
+	<script>
+		/*
+		Prototype Inheritance
+		
+		All JavaScript objects inherit properties and methods from a prototype.
+		Date objects inherit from Date.prototype. Array objects inherit from Array.prototype. Person objects inherit from Person.prototype.
+		The Object.prototype is on the top of the prototype inheritance chain:
+		Date objects, Array objects, and Person objects inherit from Object.prototype.
+		
+		- 자바스크립트에 선언된 모든 Object는 prototype을 제공한다.
+		- 객체 선언 함수의 구성 요소를 정적 추가할 수 있다.
+		- 기존 생성된 객체들도 추가된 구성 요소의 영향을 받는다.
+		- 자바스크립트 내장 객체들도 prototype을 제공한다.		
+		 */
+
+		//person 객체를 만들기 위한 함수 선언
+		function Person(name, phone) {
+
+			// 프로퍼티 구성
+			this.name = name;
+			this.phone = phone;
+
+		}
+
+		function myFunction() {
+
+			var p1 = new Person("hong", "010-1234-1234");
+			var p2 = new Person("jeon", "010-4567-4567");
+
+			//프로퍼티 정적 추가
+			//주의)객체 선언 함수에 영향 준다.
+			Person.prototype.company = "SIST";
+
+			//메소드 정적 추가
+			Person.prototype.toString = function() {
+				return "name: " + this.name + ", phone: " + this.phone
+				+ ", company: " + this.company;
+			}
+			
+			var txt = ""
+			txt += p1.toString() + "<br>" + p2.toString();
+
+			document.getElementById("demo").innerHTML = txt;
+		}
+	</script>
+
+</body>
+</html>

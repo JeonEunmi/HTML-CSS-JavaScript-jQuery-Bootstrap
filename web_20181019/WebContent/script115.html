@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body onload="myFunction()">
+
+	<h1>JavaScript Cookies</h1>
+
+	<script>
+		/* 
+		JavaScript Cookies
+		
+		Cookies let you store user information in web pages.
+		- 웹브라우저가 웹페이지 방문자(사용자)의 정보를 저장하는 (물리)저장소
+		- 일정 기간(시간, 일, 주 단위) 동안만 저장 가능
+		- 일정 크기의 정보만 저장 가능
+		- 예를 들어, 쇼핑몰에 '오늘 본 상품' 정보 저장
+		
+		Create a Cookie with JavaScript
+		형식)
+		document.cookie = "키=값;키=값;키=값;...; expires=날짜정보;";
+		
+		Read a Cookie with JavaScript
+		형식)
+		document.cookie;
+		
+		Delete a Cookie with JavaScript
+		- 쿠키 정보는 강제 삭제하지 않아도 자동으로 삭제될 수 있다.
+		형식)
+		document.cookie = "키=;키=;키=;...;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+		
+		*/	
+		 
+		
+		function setCookie(cname, cvalue, exdays) {
+		    var d = new Date();
+		    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+		    var expires = "expires="+d.toUTCString();
+		    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+		}
+
+		function getCookie(cname) {
+		    var name = cname + "=";
+		    var ca = document.cookie.split(';');
+		    for(var i = 0; i < ca.length; i++) {
+		        var c = ca[i];
+		        while (c.charAt(0) == ' ') {
+		            c = c.substring(1);
+		        }
+		        if (c.indexOf(name) == 0) {
+		            return c.substring(name.length, c.length);
+		        }
+		    }
+		    return "";
+		}
+		
+		function myFunction() {
+			
+			//쿠키 정보 확인
+			console.log("code:"+getCookie("code"));
+			
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+<style>
+</style>
+
+<!-- jQuery CDN -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+	//JavaScript 버전 onload 이벤트 처리
+	/*
+	객체.이벤트핸들러 = function(){
+	 
+	};
+	 */
+
+	/* 
+	 window.onload = function() {
+	 document.getElementById("btn01").onclick = function() {
+	 document.getElementById("demo").innerHTML = "Hello.World!";
+	 }
+	 };
+	 */
+
+	//jQuery 버전 이벤트 처리
+	//jQuery 이벤트 메소드는 특정 이벤트 발생
+	$(document).ready(function() {
+		$("#btn01").click(function() {
+			$("#demo").html("HELLO, World!");
+		});
+	});
+	 
+</script>
+
+</head>
+<body>
+
+	<h1>jQuery</h1>
+
+	<!-- 버튼 엘리먼트 등록 및 click 이벤트 처리 -->
+	<button id="btn01">이벤트 처리</button>
+	<div id="demo"></div>
+
+
+
+</body>
+</html>
