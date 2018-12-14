@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+
+	<h1>The For Loop</h1>
+
+
+	<script>
+		/*
+		[문제]1부터 100까지의 수를 합산하고 그 결과를 출력
+		 실행예)
+		 1 2 3 4 5 6 7 8 9 10 -> 55
+		 11 12 13 14 15 16 17 18 19 20  -> ??
+		 ...
+		 91 92 93 94 95 96 97 98 99 100  -> 5050
+		 -----------
+		 5050
+		  */
+
+		 var sum = 0;
+	
+		 var tmp = "";
+		 
+		 for(var i = 1; i<101; i++){
+			 
+			 sum += i;
+			 tmp += i + " ";
+			 
+			 if(i % 10 == 0){
+				 tmp += "->" +  sum + "\n";
+			 }
+		 }
+		 
+		 console.log(tmp + "------------------\n" + sum);
+		 
+	</script>
+
+</body>
+</html>
+

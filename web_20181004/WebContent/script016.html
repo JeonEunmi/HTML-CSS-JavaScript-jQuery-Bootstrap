@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+
+	<h1>JavaScript Random</h1>
+
+
+	<script>
+		/*
+		JavaScript Random
+		Math.random()
+		Math.random() returns a random number between 0 (inclusive),  and 1 (exclusive):
+		 */
+
+		 var a = Math.random();  
+		
+		// 0보다 크거나 같고, 1보다 작은 난수 발생
+		console.log(a);
+		
+		// 특정 범위(0~99)의 난수 발생
+		console.log(parseInt(Math.random() * 100));
+		
+		// 특정 범위(1~100)의 난수 발생
+		console.log(parseInt(Math.random() * 100) + 1);
+		
+		// 특정 범위(0~100)의 난수 발생
+		console.log(parseInt(Math.random() * 101));
+	</script>
+
+</body>
+</html>
+
