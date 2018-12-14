@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css" href="resources/style/style01.css">
+
+<style>
+table {
+ border-collapse: collapse;
+ width: 100%;
+}
+
+th, td {
+ padding: 8px;
+ text-align: left;
+ border-bottom: 1px solid #ddd;
+}
+</style>
+
+<!-- jQuery CDN -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+	/* 
+	jQuery DOM Manipulation
+	
+	Add New HTML Content
+	We will look at four jQuery methods that are used to add new content:
+
+	append() 
+	- Inserts content at the end of the selected elements
+	- 동적 생성된 엘리먼트를 특정 엘리먼트 맨 뒤에 덧붙인다
+	
+	prepend() 
+	- Inserts content at the beginning of the selected elements
+	- 동적 생성된 엘리먼트를 특정 엘리먼트 맨 앞에 덧붙인다
+
+	after() 
+	- Inserts content after the selected elements
+	- 동적 생성된 엘리먼트를 특정 엘리먼트의 바로 뒤에 덧붙인다
+
+	before() 
+	- Inserts content before the selected elements
+	- 동적 생성된 엘리먼트를 특정 엘리먼트의 바로 앞에 덧붙인다
+	
+	엘리먼트 동적 생성 방법
+	1. "<td>홍길동<td>"
+	2. $("<td></td>").text("홍길동")
+	3. document.createElement("td").innerHTML = "홍길동";
+	
+	*/
+	
+	//원본 자료 저장소
+	var name = "홍길동";
+	var phone = "010-1234-1234";
+ 
+	$(document).ready(function() {
+		/* 
+		<table>
+			<tbody>
+				<tr>
+					<td>홍길동</td><td>010-1234-1234</td>
+				</tr>
+			</tbody>
+		</table>
+		*/
+		
+		//동적 엘리먼트 생성 버튼에 대한 click 이벤트 등록
+		$("#btn01").on("click", function() {
+			//동적 엘리먼트 생성
+			var table = $("<table></table>");
+			var tbody = $("<tbody></tbody>");
+			var tr = $("<tr></tr>");
+			var name = $("<td></td>").text("홍길동");
+			var phone = $("<td></td>").text("010-1234-1234");
+			
+			//특정 엘리먼트에 동적 추가
+			$(table).append(tbody)
+					.append(tr)
+					.append(name, phone);
+
+			//기존에 존재하는 엘리먼트에 동적 생성된 엘리먼트를 동적 추가
+			$("#demo").append(table);
+		});
+
+	});
+
+</script>
+
+</head>
+<body>
+
+	<h1>jQuery DOM Manipulation</h1>
+
+	<div>
+		<button id="btn01">동적 엘리먼트 생성</button>
+	</div>
+	<div id="demo"></div>
+
+</body>
+</html>

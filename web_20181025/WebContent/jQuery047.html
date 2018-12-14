@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css" href="resources/style/style01.css">
+
+<style>
+</style>
+
+<!-- jQuery CDN -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+
+	/* 
+	jQuery DOM Manipulation
+	
+	Remove Elements/Content
+	To remove elements and content, there are mainly two jQuery methods:
+
+	remove() 
+	- Removes the selected element (and its child elements)
+	- 특정 엘리먼트 동적 삭제
+	
+	empty() 
+	- Removes the child elements from the selected element
+	- 전체 엘리먼트 동적 삭제
+	
+	*/
+	$(document).ready(function() {
+
+		$("#btn01").on("click", function() {
+			//특정 영역의 특정 엘리먼트(들)를 찾아서 동적 삭제
+			$("#demo img").remove();
+		});
+
+	});
+</script>
+
+</head>
+<body>
+
+	<h1>jQuery DOM Manipulation</h1>
+	<div>
+		<button id="btn01">동적 엘리먼트 삭제</button>
+	</div>
+	<div id="demo">
+		<img src="resources/img/5mf710q8sgvg016fcn9703.png">
+		<span>그림1</span>
+		<img src="resources/img/5mf710q8sgvg016fcn9704.png">
+		<span>그림2</span>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+<style>
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+</style>
+<!-- jQuery CDN -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	/*
+	 *  Set Content - text(), html(), and val()
+	 We will use the same three methods from the previous page to set content:
+
+	 text()
+	 	- Sets or returns the text content of selected elements
+	 	- 특정 엘리먼트에 텍스트 정보 지정(덮어쓰기)
+	 	- 태그 제외 후 사용한다. 태그가 지정되면 오류 발생 주의사항
+	 	- javaScript 에서는 innerText 프로퍼티
+	 	
+	 html()
+		- Sets or returns the content of selected elements (including HTML markup)
+		- 특정 엘리먼트에 콘텐츠 정보 지정. 태그 포함.
+		- javaScript 에서는 innerHTML 프로퍼티
+		
+	 val()
+		- Sets or returns the value of form fields
+		- 특정 폼 엘리먼트의 value 속성의 값 지정.
+		- javaScript 에서는 value 프로퍼티
+	 */
+	// 원본 자료
+	var name = "홍길동";
+	var phone = "010-1234-1234";
+
+	$(document).ready(function() {
+
+		//초기화 함수 호출
+		init();
+
+		$("#btn01").on("click", function() {
+
+			name = $("#name").val();
+			phone = $("#phone").val();
+
+			//수정 후 상태 출력
+			$("#demo").html("수정 후 name : " + name + ", phone : " + phone);
+
+		});
+	});
+
+	function init() {
+
+		// 폼 엘리먼트의 value 속성의 값 지정
+		$("#name").val(name);
+		$("#phone").val(phone);
+
+		//수정 전 상태 출력
+		$("#demo").html("수정 전 name : " + name + ", phone : " + phone);
+	}
+</script>
+</head>
+<body>
+
+	<h1>jQuery DOM Manipulation</h1>
+
+	<div>
+		이름 <input type="text" id="name"> 전화번호 <input type="text"
+			id="phone">
+		<button id="btn01">개인정보 수정</button>
+	</div>
+
+	<div id="demo"></div>
+
+</body>
+</html>

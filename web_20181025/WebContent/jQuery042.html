@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+<style>
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+</style>
+<!-- jQuery CDN -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	/*
+	 * Get Content - text(), html(), and val()
+	 Three simple, but useful, jQuery methods for DOM manipulation are:
+
+	 text()
+	 	- Sets or returns the text content of selected elements
+	 	- 엘리먼트가 가진 텍스트 정보 확인. 태그 미포함
+	 	- javaScript 에서는 innerText 프로퍼티
+	 	
+	 html()
+		- Sets or returns the content of selected elements (including HTML markup)
+		- 엘리먼트가 가진 콘텐츠 정보 확인. 태그 포함
+		- javaScript 에서는 innerHTML 프로퍼티
+		
+	 val()
+		- Sets or returns the value of form fields
+		- 폼 엘리먼트의 value 속성의 값 확인
+		- javaScript 에서는 value 프로퍼티
+	 */
+/* 	$(document).ready(function() {
+
+		//개인정보 확인 버튼에 대해서 click 이벤트 등록
+		//테이블 태그에서 특정 개인의 정보 확인 후 결과 출력
+		$(".btn").on("click", function() {
+
+			var obj1 = $(this).parents("td").siblings().eq(0).text();
+			var obj2 = $(this).parents("td").siblings().eq(1).text();
+			var obj3 = $(this).parents("td").siblings().eq(2).text();
+			obj = obj1 + "/" + obj2 + "/" + obj3
+			$("#demo").html(obj);
+
+		});
+
+	}); */
+</script>
+</head>
+<body>
+
+	<h1>jQuery DOM Manipulation</h1>
+
+	<div>
+
+		<table id="members">
+			<tr>
+				<th>Firstname</th>
+				<th>Lastname</th>
+				<th>Savings</th>
+				<th></th>
+			</tr>
+			<tr>
+				<td>Peter</td>
+				<td>Griffin</td>
+				<td>$100</td>
+				<td><button class="btn">개인정보 확인</button></td>
+			</tr>
+			<tr>
+				<td>Lois</td>
+				<td>Griffin</td>
+				<td>$150</td>
+				<td><button class="btn">개인정보 확인</button></td>
+			</tr>
+			<tr>
+				<td>Joe</td>
+				<td>Swanson</td>
+				<td>$300</td>
+				<td><button class="btn">개인정보 확인</button></td>
+			</tr>
+			<tr>
+				<td>Cleveland</td>
+				<td>Brown</td>
+				<td>$250</td>
+				<td><button class="btn">개인정보 확인</button></td>
+			</tr>
+		</table>
+	</div>
+
+	<div id="demo"></div>
+
+	<script>
+		//javaScript
+		//개인정보 확인 버튼에 대해서 click 이벤트 등록
+		//테이블 태그에서 특정 개인의 정보 확인 후 결과 출력
+		var obj = document.getElementsByClassName("btn");
+
+		for (var a = 0; a < obj.length; a++) {
+
+			obj[a].onclick = function() {
+
+				var temp = this.parentNode;
+
+				var txt = "";
+
+				while (true) {
+
+					temp = temp.previousSibling;
+
+					if (temp != null) {
+
+						if (temp.nodeType == 1) {
+
+							txt = temp.innerText + txt;
+						}
+					}
+					if (temp == null) {
+						break;
+					}
+				}
+
+				document.getElementById("demo").innerText = txt;
+			}
+
+		}
+	</script>
+
+</body>
+</html>

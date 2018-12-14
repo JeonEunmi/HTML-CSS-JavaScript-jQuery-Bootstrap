@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+<style>
+</style>
+<!-- jQuery CDN -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	/*
+	 * Get Content - text(), html(), and val()
+	 Three simple, but useful, jQuery methods for DOM manipulation are:
+
+	 text()
+	 	- Sets or returns the text content of selected elements
+	 	- 엘리먼트가 가진 텍스트 정보 확인. 태그 미포함
+	 	- javaScript 에서는 innerText 프로퍼티
+	 	
+	 html()
+		- Sets or returns the content of selected elements (including HTML markup)
+		- 엘리먼트가 가진 콘텐츠 정보 확인. 태그 포함
+		- javaScript 에서는 innerHTML 프로퍼티
+		
+	 val()
+		- Sets or returns the value of form fields
+		- 폼 엘리먼트의 value 속성의 값 확인
+		- javaScript 에서는 value 프로퍼티
+	 */
+	$(document).ready(function() {
+
+		// 계좌조회 버튼에 대한 click 이벤트 등록
+		// ->  click(), on() 메소드
+		$("#btn01").on("click", function() {
+			// 계좌번호 조회 후 결과 출력
+			var accountId = $("#accountId").val();
+			
+			$("#demo").html("입력이 완료되었습니다.");
+		})
+
+	});
+</script>
+</head>
+<body>
+
+	<h1>jQuery DOM Manipulation</h1>
+
+	<div>
+		계좌번호 <input type="number" id="accountId" value="2018030101">
+		<button id="btn01" title="계좌번호 필요">계좌조회</button>
+	</div>
+
+	<div id="demo"></div>
+
+</body>
+</html>
