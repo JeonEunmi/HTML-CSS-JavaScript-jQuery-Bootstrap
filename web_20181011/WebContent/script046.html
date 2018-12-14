@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style>
+</style>
+
+
+</head>
+<body>
+
+	<h1>Removing Existing HTML Elements</h1>
+
+	<button onclick="myFunction()">이벤트에 의한 함수 호출</button>
+
+	<div id = "demo"></div>
+
+	<script>
+	
+	/*
+	function functionName(){
+		
+	}
+	*/
+	
+	//2차 함수 -> 진법 변환 액션 구현
+	function test(){
+		return "Hello, World!";
+	}
+	
+	//1차 함수 -> 1~10까지의 수에 대한 반복문 액션
+	function myFunction(){
+		//2차 함수 호출
+		var result = window.test();
+		document.getElementById("demo").innerHTML = result;
+	}
+	
+	// 함수호출
+	myFunction();
+	</script>
+
+
+</body>
+</html>

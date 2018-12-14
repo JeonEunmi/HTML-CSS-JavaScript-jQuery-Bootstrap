@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style>
+</style>
+
+
+</head>
+<body>
+
+	<h1>Removing Existing HTML Elements</h1>
+
+	<button onclick="myFunction()">동적 엘리먼트 추가</button>
+
+	<div id = "demo">
+		<p>This is a paragraph.</p>
+		<p>This is another paragraph.</p>
+	</div>
+
+	<script>
+		
+	function myFunction(){
+		
+		var element = document.getElementById("demo");
+		var target = element.getElementsByTagName("p")[1];
+		element.removeChild(target);
+		//target.parentNode.removeChild(element);	
+	}
+	</script>
+
+
+</body>
+</html>

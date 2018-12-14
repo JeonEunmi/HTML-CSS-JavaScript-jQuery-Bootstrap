@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style>
+
+
+
+</style>
+
+
+</head>
+<body>
+
+   <h1>Creating New HTML Elements (Nodes)</h1>
+   
+   <button onclick = "myFunction()">동적 엘리먼트 생성</button>
+   
+   <div id = "demo"></div>
+   
+<script>
+
+   function myFunction() {
+      var t = document.createElement("table");
+      var tb = document.createElement("tbody");
+      var tr = document.createElement("tr");
+      var td1 = document.createElement("td");      
+      var name = document.createTextNode("홍길동");
+      td1.appendChild(name);
+      
+      var td2 = document.createElement("td");      
+      var phone = document.createTextNode("1234");
+      td2.appendChild(phone);
+   
+      tr.appendChild(td1);
+      tr.appendChild(td2);
+      tb.appendChild(tr);
+      t.appendChild(tb);
+      
+      
+      var element = document.getElementById("demo");
+      element.appendChild(tb);
+   }
+
+
+</script>
+
+
+</body>
+</html>

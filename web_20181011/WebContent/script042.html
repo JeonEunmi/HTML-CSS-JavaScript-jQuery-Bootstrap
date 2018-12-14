@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style>
+</style>
+
+
+</head>
+<body>
+
+	<h1>Creating New HTML Elements (Nodes)</h1>
+
+	<button onclick="myFunction()">동적 엘리먼트 생성</button>
+
+	<div id="demo"></div>
+
+	<script>
+		/*
+		 문제)아래 태그를 동적 생성하는 과정 추가
+		 <ul>
+		 <li>Coffee</li>
+		 <li>Tea</li>
+		 <li>Milk</li>
+		 </ul>
+		 */
+		 
+		 function myFunction() {
+			 var ul = document.createElement("ul");
+			 var li1 = document.createElement("li");
+			 var li2 = document.createElement("li");
+			 var li3 = document.createElement("li");
+			 var c = document.createTextNode("Coffee");
+			 var t = document.createTextNode("Tea");
+			 var m = document.createTextNode("Milk");
+			 
+			 li1.appendChild(m);
+			 li2.appendChild(t);
+			 li3.appendChild(c);
+			 
+			 ul.appendChild(li1);
+			 ul.appendChild(li2);
+			 ul.appendChild(li3);
+			 
+		      var element = document.getElementById("demo");
+		      element.appendChild(ul);
+		 }
+	</script>
+
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style>
+table {
+    border: 1px solid #000000;
+}
+td {
+    border: 1px solid #000000;
+    width: 150px;
+    text-align: center;
+}
+</style>
+
+
+</head>
+<body>
+
+	<h1>Creating New HTML Elements (Nodes)</h1>
+
+	<div>
+		이름 <input type="text" id="name"> 전화번호 <input type="text"
+			id="phone">
+
+		<button onclick="myFunction()">회원 정보 추가</button>
+	</div>
+
+	<div>
+		<table>
+			<tbody id="demo">
+				<tr>
+					<th>이름</th>
+					<th>전화번호</th>
+				</tr>
+
+			</tbody>
+		</table>
+
+
+	</div>
+
+	<script>
+		function myFunction() {
+			var t = document.createElement("table");
+			var tb = document.createElement("tbody");
+			var tr = document.createElement("tr");
+			var td1 = document.createElement("td");
+
+			var nodeObj1 = document.getElementById("name").value;
+			var name = document.createTextNode(nodeObj1);
+
+			td1.appendChild(name);
+
+			var td2 = document.createElement("td");
+
+			var nodeObj2 = document.getElementById("phone").value;
+			var phone = document.createTextNode(nodeObj2);
+			td2.appendChild(phone);
+
+			tr.appendChild(td1);
+			tr.appendChild(td2);
+			tb.appendChild(tr);
+			t.appendChild(tb);
+
+			var element = document.getElementById("demo");
+			element.appendChild(tr);
+		}
+	</script>
+
+
+</body>
+</html>

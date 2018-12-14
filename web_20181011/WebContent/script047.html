@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style>
+</style>
+
+
+</head>
+<body>
+
+	<h1>Removing Existing HTML Elements</h1>
+
+	<button onclick="myFunction()">이벤트에 의한 함수 호출</button>
+
+	<div id = "demo"></div>
+
+	<script>
+	
+	/*
+	function functionName(){
+		
+	}
+	*/
+	
+	function test(){
+		document.getElementById("demo").innerHTML = "Hello, World!";
+	}
+		
+	function myFunction(){
+		this.test();
+	}
+	
+	// 함수호출
+	myFunction();
+	</script>
+
+
+
+</body>
+</html>
