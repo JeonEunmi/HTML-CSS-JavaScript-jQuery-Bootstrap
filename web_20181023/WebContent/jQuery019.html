@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+<!-- jQuery CDN -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+	/* 
+	jQuery Event Methods(jQuery 이벤트 메소드)
+	
+	All the different visitor's actions that a web page can respond to are called events.
+	An event represents the precise moment when something happens.
+	- 이벤트는 사용자에 의해 발생하는 어떤 사건(행위)를 이벤트라고 한다.
+	- 사전에 이벤트 등록을 하면, 실제 이벤트 발생시 함수의 특정 액션을 
+	호출 및 실행할 수 있다.
+	- 이벤트 종류는 ready, click, mouseOver, mouseOut 이벤트 등이 있다.
+	
+	형식)
+	$(선택자).이벤트(function() {
+		//실행 코드;
+	});
+
+	$(선택자).on("이벤트", function() {
+		//실행 코드;
+	});
+	
+	$(선택자).on({이벤트: function() {
+		//실행 코드;
+	},
+	이벤트:function() {
+		//실행 코드
+	}});
+	
+	$(document).on("이벤트", "선택자", function() {
+		//실행 코드;
+	});
+	
+	
+	
+	주의) 'onclick'이 아니라 'click'으로 표현한다.
+	주의) 'onload'가 아니라 'ready' 이벤트이다.
+	
+	주의) 이벤트 지정 객체가 동시에 여러개인 경우라도 이벤트 등록 가능하다.
+	
+	 */
+
+	$(document).ready(function() {
+		$("#btn02").on("click", function() {
+			//메시지 박스 호출
+			window.alert("Hello, World!");
+		});
+
+	});
+</script>
+
+</head>
+
+<body>
+
+	<h1>jQuery Event</h1>
+
+	<!-- JavaScript -->
+	<!-- 사용자가 발생시키는 이벤트와 자바스크립트 함수에 대한 연결 -->
+	<!-- 버튼 객체 탐색을 위한 식별자 추가 필요 -->
+	<button id="btn01">함수호출</button>
+	<button id="btn02">함수호출</button>
+
+	<script>
+		//현재 페이지가 로드될 때 자동 실행되도록 함수 외부에 코드 작성
+		//이벤트 등록할 객체 탐색 및 이벤트 등록, 함수 연결
+		document.getElementById("btn01").addEventListener("click", function() {
+			//메시지 박스 호출
+			window.alert("Hello, World!");
+		});
+	</script>
+
+</body>
+</html>

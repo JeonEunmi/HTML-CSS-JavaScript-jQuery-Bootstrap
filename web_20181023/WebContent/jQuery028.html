@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+<style>
+.ancestors * {
+	/* 엘리먼트 특성(인라인, 블럭)에 관계없이 모두 블럭 상태로 만든다. */
+	display: block;
+	/* 블럭 엘리먼트의 경계선 지정 */
+	border: 2px solid lightgrey;
+	/* 전경색 */
+	color: lightgrey;
+	/* 블럭 엘리먼트의 안쪽 여백 */
+	padding: 5px;
+	/* 블럭 엘리먼트의 바깥쪽 여백 */
+	margin: 15px;
+}
+</style>
+<!-- jQuery CDN -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+/* 	$(document).ready(function() {
+
+		//특정 부모 밑에 있는 특정 자식 엘리먼트(들) 전체에 대해서 스타일 지정
+		$(".ancestors").children("p").css("border", "2px solid red");
+
+	}); */
+</script>
+</head>
+<body>
+
+	<h1>jQuery Traversing</h1>
+
+	<div class="ancestors">
+		<div style="width: 500px;">
+			div (great-grandparent)
+			<ul>
+				ul (grandparent)
+				<li>li (direct parent) <span>span</span>
+				</li>
+			</ul>
+		</div>
+
+		<div style="width: 500px;">
+			div (grandparent)
+			<p>
+				p (direct parent) <span>span</span>
+			</p>
+		</div>
+		
+		<p style="width: 500px;">
+			p (direct parent) <span>span</span>
+		</p>
+	</div>
+
+	<script>
+		// 특정 부모 밑에 있는 특정 자식 엘리먼트(들)에 대해서 스타일 지정 
+		
+		var obj = document.getElementsByClassName("ancestors")[0];
+		
+		var nodes = obj.childNodes;
+		
+		for (var a = 0; a < nodes.length; a++){
+			
+			var node = nodes[a];
+			
+			if(node.nodeType == 1 && node.nodeName == "P"){
+				
+				node.style.border = "2px solid red";
+				
+			}
+		}
+	</script>
+</body>
+</html>

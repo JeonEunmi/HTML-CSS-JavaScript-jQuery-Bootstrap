@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+<style>
+</style>
+<!-- jQuery CDN -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		// keydown 이벤트 등록
+		$("#txt02").keydown(function(){
+			$("#test").html($(this).val());
+		});
+	});
+
+	function myFunction(obj) {
+		//<input> 엘리먼트에 입력되는 콘텐츠 확인
+		document.getElementById("demo").innerHTML = obj.value;
+
+	}
+</script>
+</head>
+<body>
+
+	<!-- 키보드에 의한 키 입력 행위가 키 이벤트(keydown, keyup, keypress)이다 -->
+	사용자 입력:
+	<input type="text" id="txt01" onkeydown="myFunction(this)">
+	<div id="demo"></div>
+
+	<!-- jQuery -->
+	사용자 입력:
+	<input type="text" id="txt02">
+	<div id="test"></div>
+
+
+
+</body>
+</html>
