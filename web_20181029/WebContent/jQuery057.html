@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css" href="resources/style/style01.css">
+
+<style>
+#demo {
+	margin: 10px;
+	padding: 50px;
+	background-color: white;
+	color: black;
+	border: 2px solid red;
+}
+</style>
+
+<!-- jQuery CDN -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+	/* 
+	jQuery Effects
+	- Hide, Show, Toggle, Slide, Fade, and Animate.
+	- 시각적인 효과 지정 메소드
+	
+	jQuery slideDown()
+	Demonstrates the jQuery slideDown() method.
+	- 특정 객체를 화면에서 나타나게 한다.
+	
+	jQuery slideUp()
+	Demonstrates the jQuery slideUp() method.
+	- 특정 객체를 화면에서 사라지게 한다.
+	
+	jQuery slideToggle()
+	Demonstrates the jQuery slideToggle() method.
+	
+	*/
+ 	
+	$(document).ready(function() {
+
+		$("#btn01").on("click", function() {
+			$("#demo").slideUp();
+		});
+		$("#btn02").on("click", function() {
+			$("#demo").slideUp(1000);
+		});
+
+	});
+</script>
+
+</head>
+<body>
+	<h1>jQuery Effects</h1>
+
+	<div>
+		<button id="btn01">slideUp</button>
+		<button id="btn02">slideUp(timer)</button>
+	</div>
+	<div id="demo">jQuery Effects</div>
+
+</body>
+</html>

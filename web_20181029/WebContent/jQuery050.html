@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+<style>
+#demo {
+	margin: 10px;
+	padding: 50px;
+	background-color: white;
+	color: black;
+	border: 2px solid red;
+	color: black;
+}
+</style>
+<!-- jQuery CDN -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	/*
+	 * jQuery Manipulating CSS
+	 jQuery has several methods for CSS manipulation. We will look at the following methods:
+
+	 addClass()
+	 - Adds one or more classes to the selected elements
+	 - 동적 class 속성 추가. 미리 준비된 스타일(CSS)의 영향을 받는다.
+	 
+	 removeClass()
+	 - Removes one or more classes from the selected elements
+	 - 동적 class 속성 삭제. 미리 준비된 스타일(CSS)의 영향을 받는다.
+	 
+	 toggleClass()
+	 - Toggles between adding/removing classes from the selected elements
+	 - 동적 class 속성 추가/삭제. 미리 준비된 스타일(CSS)의 영향을 받는다.
+	 
+	 css()
+	 - Sets or returns the style attribute
+	 - 동적 스타일(CSS) 지정 또는 삭제\
+	 
+	 css("propertyname");
+	 css("propertyname","value");
+	 css("propertyname":"value","propertyname":"value", ...);
+	 
+	 */
+
+	$(document).ready(function() {
+
+		//버튼 클릭시 스타일 지정
+		$("#btn01").on("click", function() {
+		$("#demo").css("margin", "10px")
+				.css("background-color", "CornflowerBlue")
+				.css("border", "3px solid green")
+				.css("color", "white");
+		});
+		
+		//버튼 클릭시 스타일 지정
+		$("#btn02").on("click", function() {
+			$("#demo").css("margin", "50px");
+			$("#demo").css("background-color", "Lavender");
+			$("#demo").css("border", "2px solid LightSlateGray");
+			$("#demo").css("color", "white");
+		});
+		
+		//버튼 클릭시 스타일 지정
+		$("#btn03").on("click", function() {
+			$("#demo").css({"margin": "30px", "background-color": "SandyBrown"
+				,"border": "2px solid YellowGreen","color": "blue"});
+		});
+		
+		//버튼 클릭시 스타일 지정
+		$("#btn04").on("click", function() {
+			$("#demo").css("margin", "40px");
+			$("#demo").css("background-color", "PaleVioletRed");
+			$("#demo").css("border", "2px solid Purple");
+			$("#demo").css("color", "white");
+		});
+
+	});
+</script>
+</head>
+<body>
+
+	<h1>jQuery Manipulating CSS</h1>
+
+	<button id="btn01">기본스타일</button>
+	<button id="btn02">스타일1</button>
+	<button id="btn03">스타일2</button>
+	<button id="btn04">스타일3</button>
+	<div id="demo">jQuery Manipulating CSS</div>
+
+
+
+
+</body>
+</html>

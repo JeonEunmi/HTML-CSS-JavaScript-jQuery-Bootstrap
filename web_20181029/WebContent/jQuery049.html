@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css" href="resources/style/style01.css">
+
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+</style>
+
+<!-- jQuery CDN -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+	//문제) 버튼 클릭시 특정 개인 정보 삭제하는 코드 작성
+	//confirm()을 이용해서 확인, 취소 액션 추가
+	//jQuery, Javascript 버전 작성
+
+	$(document).ready(function() {
+		$(".btn01").on("click", function() {
+			if (confirm("현재 항목을 삭제할까요?")) {
+				$(this).parent().parent().remove();
+			}
+		});
+	});
+
+</script>
+
+</head>
+<body>
+
+	<h1>jQuery DOM Manipulation</h1>
+
+	<div>
+		<table id="members">
+			<tr>
+				<th>Firstname</th>
+				<th>Lastname</th>
+				<th>Savings</th>
+				<th></th>
+			</tr>
+			<tr>
+				<td>Peter</td>
+				<td>Griffin</td>
+				<td>$100</td>
+				<td><button class="btn01">개인정보 삭제</button></td>
+			</tr>
+			<tr>
+				<td>Lois</td>
+				<td>Griffin</td>
+				<td>$150</td>
+				<td><button class="btn01">개인정보 삭제</button></td>
+			</tr>
+			<tr>
+				<td>Joe</td>
+				<td>Swanson</td>
+				<td>$300</td>
+				<td><button class="btn01">개인정보 삭제</button></td>
+			</tr>
+			<tr>
+				<td>Cleveland</td>
+				<td>Brown</td>
+				<td>$250</td>
+				<td><button class="btn01">개인정보 삭제</button></td>
+			</tr>
+		</table>
+
+	</div>
+	<div id="demo"></div>
+
+
+	<script>
+		/* 
+		var obj = document.getElementsByClassName("btn01");
+		for (var a=0; a<obj.length; ++a) {
+			var btn = obj[a];
+			btn.onclick = function() {
+				remove(this);
+			};
+		}
+		
+		function remove(obj) {
+			if (confirm("현재 항목을 삭제할까요?")) {
+				var td = obj.parentNode;
+				var tr = td.parentNode;
+				var tbody = tr.parentNode;
+				tbody.removeChild(tr);
+			}
+		}
+		 */
+	</script>
+</body>
+</html>

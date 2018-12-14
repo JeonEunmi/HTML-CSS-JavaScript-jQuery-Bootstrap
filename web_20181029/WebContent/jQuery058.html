@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css" href="resources/style/style01.css">
+
+<style>
+/* table 태그에 적용할 스타일 */
+.a {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* th, td 태그에 적용할 스타일 */
+.b {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+</style>
+
+<!-- jQuery CDN -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+	/* 
+	jQuery Method Chaining
+	- With jQuery, you can chain together actions/methods.
+	- Chaining allows us to run multiple jQuery methods (on the same element) within a single statement.
+	- 메소드 두 개 이상을 연결해서 실행 가능
+	- 메소드 실행 후 해당 객체 자신을 다시 반환하도록 되어 있다
+	
+ 	*/
+	$(document).ready(function() {
+
+		$("#btn01").on("click", function() {
+			$("#members").removeClass("a")
+				.find("th, td").removeClass("b");
+		});
+		$("#btn02").on("click", function() {
+			
+			//method chainning 이전
+			//jQuery Method 실행 후 반환값은 객체 자신의 정보를 반환한다.
+			/* 
+			var obj = $("#members");+
+			var t1 = $(obj).addClass("a");
+			var t2 = $(t1).find("th, td");
+			$(t2).addClass("b");
+			*/
+			
+			//method chainning 이후
+			$("#members").addClass("a").find("th, td").addClass("b");
+			
+		});
+		
+	});
+</script>
+
+</head>
+<body>
+
+	<h1>jQuery Method Chaining</h1>
+
+	<div>
+		<!-- 스타일 적용 없는 경우 -->
+		<button id="btn01">스타일1</button>
+		<!-- 특정 스타일 적용한 경우 -->
+		<button id="btn02">스타일2</button>
+	</div>
+	<div>
+		<table id="members">
+			<tr>
+				<th>Firstname</th>
+				<th>Lastname</th>
+				<th>Savings</th>
+			</tr>
+			<tr>
+				<td>Peter</td>
+				<td>Griffin</td>
+				<td>$100</td>
+			</tr>
+			<tr>
+				<td>Lois</td>
+				<td>Griffin</td>
+				<td>$150</td>
+			</tr>
+			<tr>
+				<td>Joe</td>
+				<td>Swanson</td>
+				<td>$300</td>
+			</tr>
+			<tr>
+				<td>Cleveland</td>
+				<td>Brown</td>
+				<td>$250</td>
+			</tr>
+		</table>
+
+	</div>
+	
+</body>
+</html>
