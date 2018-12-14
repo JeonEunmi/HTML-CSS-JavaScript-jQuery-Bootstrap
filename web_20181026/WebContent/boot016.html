@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>쌍용교육센터</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<style>
+</style>
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+	//배열 저장소
+	var members = [];
+	var idx = 0;
+
+	//사용자 정의 객체 선언
+	function Member(mid, name, phone) {
+		this.mid = mid;
+		this.name = name;
+		this.phone = phone;
+	}
+
+	//초기화 함수
+	function init() {
+		members.push(new Member(autoMid(), "hong", "010-1234-1234"));
+		members.push(new Member(autoMid(), "park", "010-3456-3456"));
+	}
+
+	//번호 자동 생성 함수
+	function autoMid() {
+		++idx;
+		var mid = "M" + ((idx < 10) ? "0" + idx : idx);
+		return mid;
+	}
+
+	$(document)
+			.ready(
+					function() {
+
+						//초기화 함수 호출
+						init();
+
+						//출력 전용 함수 호출
+						print();
+
+						//회원정보 추가(또는 수정) 버튼에 대한 이벤트 처리
+						//->개인정보 삭제 버튼에 대한 동적 이벤트 처리 필요
+						$("#btnAdd")
+								.on(
+										"click",
+										function() {
+											//고유번호 생성
+											var mid = autoMid();
+											//이름 정보 확인
+											var name = $("#name").val();
+											//전화번호 정보 확인
+											var phone = $("#phone").val();
+											//Member 객체 생성
+											var member = new Member(mid, name,
+													phone);
+											//저장소에 저장
+											members.push(member);
+											//출력 전용 함수 호출
+											print();
+
+											//추가 액션 성공 메시지 출력
+											$("#name").val("");
+											$("#phone").val("");
+											$(this)
+													.parent()
+													.append(
+															"<div class=\"alert alert-success alert-dismissible fade in\" style=\"display: inline-block; padding-top: 5px; padding-bottom: 5px; margin: 0px;\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><strong>Success!</strong> 요청한 작업이 처리되었습니다.</div>");
+
+										});
+
+						//개인정보 삭제 버튼에 대한 동적 이벤트 등록
+						$(document).on("click", ".btnDel", function() {
+							if (confirm("현재 자료를 삭제할까요?")) {
+								members.splice($(this).val(), 1);
+								print();
+
+								//삭제 액션 성공 메시지 출력
+
+							}
+						});
+
+						//개인정보 수정 버튼에 대한 동적 이벤트 등록
+						//->기존 개인정보를 입력폼에 출력
+						//->'개인정보 추가' 버튼을 '개인정보 수정' 버튼으로 변경 
+						$(document)
+								.on(
+										"click",
+										".btnUpdate",
+										function() {
+											//배열 저장소에서 특정 번째 객체 확인
+											var temp = members[$(this).val()];
+
+											//특정 번째 객체의 정보를 입력폼에 출력
+											$("#name").val(temp.name);
+											$("#phone").val(temp.phone);
+
+											//화면에 존재하는 항목의 제목들을 수정
+											$("#btnAdd").text("개인정보 수정");
+											$("#input .panel-heading").text(
+													"회원 수정");
+
+											//초기화 버튼 동적 추가
+											$("#btnAdd")
+													.parent()
+													.append(
+															"<button class=\"btn btn-default btnReset\">초기화</button>");
+
+										});
+
+					});
+
+	//출력 전용 함수
+	function print() {
+		var tbody = $("<tbody></tbody>");
+		$(tbody).append(
+				"<tr><th>Mid</th><th>Name</th><th>Phone</th><th></th></tr>");
+		var count = members.length;
+		for (var a = 0; a < count; ++a) {
+			var m = members[a];
+			var tr = $("<tr></tr>");
+			var mid = $("<td></td>").text(m.mid);
+			var name = $("<td></td>").text(m.name);
+			var phone = $("<td></td>").text(m.phone);
+			var td = $("<td></td>");
+
+			var buttonDel = $("<button class=\"btn btn-default btn-xs btnDel\">개인정보 삭제</button>");
+			$(buttonDel).attr("value", a);
+			$(td).append(buttonDel);
+
+			//수정 액션을 위한 버튼 추가
+			var buttonUpdate = $("<button class=\"btn btn-default btn-xs btnUpdate\">개인정보 수정</button>");
+			$(buttonUpdate).attr("value", a);
+			$(td).append(buttonUpdate);
+
+			$(tr).append(mid, name, phone, td);
+			$(tbody).append(tr);
+		}
+		$("#members").html(tbody);
+		$("#totalcount").html(count);
+	}
+</script>
+
+</head>
+<body>
+
+	<div class="container">
+
+		<h1>
+			회원관리 v4.6 <small>BootStrap+jQuery</small>
+		</h1>
+
+		<div class="panel panel-default" id="input">
+			<div class="panel-heading">회원 추가</div>
+			<div class="panel-body">
+
+				<form action="" method="post">
+					<div class="form-group">
+						<input type="text" class="form-control" id="name" name="name"
+							placeholder="Name(max 20)" required>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" id="phone" name="phone"
+							placeholder="Phone(max 20)" required>
+					</div>
+
+					<button type="button" class="btn btn-default" id="btnAdd">회원정보
+						추가</button>
+
+				</form>
+
+			</div>
+		</div>
+
+		<div class="panel panel-default" id="output">
+			<div class="panel-heading">회원 목록</div>
+			<div class="panel-body">
+
+				<table id="members" class="table">
+					<tr>
+						<th>Mid</th>
+						<th>Name</th>
+						<th>Phone</th>
+						<th></th>
+					</tr>
+					<tr>
+						<td>M01</td>
+						<td>Peter</td>
+						<td>010-1234-1234</td>
+						<td><button class="btn btn-default btn-xs btnDel">개인정보
+								삭제</button></td>
+					</tr>
+					<tr>
+						<td>M02</td>
+						<td>Lois</td>
+						<td>010-4321-4321</td>
+						<td><button class="btn btn-default btn-xs btnDel">개인정보
+								삭제</button></td>
+					</tr>
+					<tr>
+						<td>M03</td>
+						<td>Joe</td>
+						<td>010-6543-6543</td>
+						<td><button class="btn btn-default btn-xs btnDel">개인정보
+								삭제</button></td>
+					</tr>
+					<tr>
+						<td>M04</td>
+						<td>Cleveland</td>
+						<td>010-0987-0987</td>
+						<td><button class="btn btn-default btn-xs btnDel">개인정보
+								삭제</button></td>
+					</tr>
+				</table>
+
+				<button class="btn btn-default">
+					TotalCount <span class="badge" id="totalcount">4</span>
+				</button>
+
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>

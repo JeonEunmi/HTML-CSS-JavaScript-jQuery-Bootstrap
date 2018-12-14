@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>쌍용교육센터</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<style>
+</style>
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+
+	});
+</script>
+
+</head>
+<body>
+
+	<div class="container">
+		<h1>Bootstrap Progress Bars</h1>
+		<div>
+			<table id="members" class="table">
+				<tr>
+					<th>과정코드</th>
+					<th>과정이름</th>
+					<th>과정기간</th>
+					<th>과정진도</th>
+				</tr>
+				<tr>
+					<td>OC001</td>
+					<td>자바 전문가 과정</td>
+					<td>2018-01-01~2018-06-31</td>
+					<td>
+						<div class="progress">
+							<div class="progress-bar progress-bar-success" role="progressbar"
+								aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+								style="width: 100%">100% Complete</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>OC002</td>
+					<td>오라클 전문가 과정</td>
+					<td>2018-05-01~2018-11-31</td>
+					<td>
+						<div class="progress">
+							<div class="progress-bar progress-bar-success" role="progressbar"
+								aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+								style="width: 80%">80% Complete</div>
+						</div>					
+					</td>
+				</tr>
+				<tr>
+					<td>OC003</td>
+					<td>웹 전문가 과정</td>
+					<td>2018-11-01~2019-01-31</td>
+					<td>
+						<div class="progress">
+							<div class="progress-bar progress-bar-success" role="progressbar"
+								aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+								style="width: 0%">0% Complete</div>
+						</div>					
+					</td>
+				</tr>
+			</table>
+
+			<button class="btn btn-default">
+				TotalCount <span class="badge">3</span>
+			</button>
+
+		</div>
+
+	</div>
+
+</body>
+</html>

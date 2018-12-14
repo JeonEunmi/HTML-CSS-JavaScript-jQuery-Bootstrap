@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>쌍용교육센터</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<style>
+</style>
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+
+		$(".btn01").on("click", function() {
+			if (confirm("현재 항목을 삭제할까요?")) {
+				$(this).parent().parent().remove();
+			}
+		});
+
+	});
+</script>
+
+</head>
+<body>
+
+	<div class="container">
+		<h1>Bootstrap Badges</h1>
+		<div>
+			<table id="members" class="table">
+				<tr>
+					<th>Firstname</th>
+					<th>Lastname</th>
+					<th>Savings</th>
+					<th></th>
+				</tr>
+				<tr>
+					<td>Peter</td>
+					<td>Griffin</td>
+					<td>$100</td>
+					<td><button class="btn btn-default btn-xs btn01">개인정보
+							삭제</button></td>
+				</tr>
+				<tr>
+					<td>Lois</td>
+					<td>Griffin</td>
+					<td>$150</td>
+					<td><button class="btn btn-default btn-xs btn01">개인정보
+							삭제</button></td>
+				</tr>
+				<tr>
+					<td>Joe</td>
+					<td>Swanson</td>
+					<td>$300</td>
+					<td><button class="btn btn-default btn-xs btn01">개인정보
+							삭제</button></td>
+				</tr>
+				<tr>
+					<td>Cleveland</td>
+					<td>Brown</td>
+					<td>$250</td>
+					<td><button class="btn btn-default btn-xs btn01" disabled>개인정보
+							삭제</button></td>
+				</tr>
+			</table>
+
+			<!-- <span class="badge">4</span>를 이용한 카운트 버튼 출력 예 -->
+			<button class="btn btn-default">
+				TotalCount <span class="badge">4</span>
+			</button>
+
+		</div>
+
+	</div>
+
+</body>
+</html>

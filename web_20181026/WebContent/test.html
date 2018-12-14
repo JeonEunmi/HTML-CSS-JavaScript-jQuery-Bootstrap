@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+ 
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+    href="resources/style/style01.css">
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+div.input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #e5e5e5;
+    width: 1000px;
+}
+</style>
+<!-- jQuery CDN -->
+<script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    //여러명의 정보를 저장하기 위한 (배열)저장소 준비
+    var persons = [];
+ 
+    //Person 객체를 만들기 위한 함수 선언
+    function Person(mid, name, phone, email, regDate) {
+ 
+        //프로퍼티 구성
+        //this.변수 표현은 프로퍼티
+        //변수 표현은 지역변수
+        this.mid = mid;
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.regDate = regDate;
+ 
+    }
+ 
+    $(document).ready(function() {
+ 
+        //동적 엘리먼트 생성
+        var table = $("<table></table>");
+        var tbody = $("<tbody></tbody>");
+        var tr1 = $("<tr></tr>");
+        var midTh = $("<th></th>").text("회원아이디");
+        var nameTh = $("<th></th>").text("이름");
+        var phoneTh = $("<th></th>").text("전화번호");
+        var emailTh = $("<th></th>").text("이메일");
+        var regDateTh = $("<th></th>").text("등록일");
+ 
+        var tr2 = "";
+ 
+        $(tr1).append(midTh, nameTh, phoneTh, emailTh, regDateTh);
+        $(tbody).append(tr1);
+        $(table).append(tbody);
+        $("#demo").append(table);
+ 
+        $("#btn01").on("click", function() {
+ 
+            var name = $("#name").val();
+            var phone = $("#phone").val();
+            var email = $("#email").val();
+            var regDate = $("#regDate").val();
+            var count = persons.length + 1;
+            var mid = "M" + ((count < 10) ? "0" + count : count);
+ 
+            persons.push(new Person(mid, name, phone, email, regDate));
+ 
+            for (var a = 0; a < persons.length; a++) {
+                tr2 = $("<tr></tr>");
+                var td1 = $("<td></td>").text(persons[a].mid);
+                var td2 = $("<td></td>").text(persons[a].name);
+                var td3 = $("<td></td>").text(persons[a].phone);
+                var td4 = $("<td></td>").text(persons[a].email);
+                var td5 = $("<td></td>").text(persons[a].regDate);
+ 
+            }
+            //특정 엘리먼트에 동적 추가
+ 
+            $(tr2).append(td1, td2, td3, td4, td5);
+ 
+            $(tbody).append(tr2);
+ 
+        });
+ 
+    });
+</script>
+</head>
+<body>
+    <h1>** 회원관리 v4.4 **</h1>
+ 
+    <div>
+        이름: <input type="text" id="name"> 전화번호: <input type="text"
+            id="phone"> 이메일: <input type="text" id="email"> 등록일:
+        <input type="date" id="regDate">
+        <button id="btn01">신규 회원 정보 등록</button>
+ 
+    </div>
+    <div id="demo"></div>
+ 
+</body>
+</html>
