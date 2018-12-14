@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+
+	<h1>JavaScript Object(사용자 정의 객체)</h1>
+
+	<div>
+		이름 <input type="text" id="name"> 전화번호 <input type="text"
+			id="phone">
+		<button onclick="myFunction()">객체 생성</button>
+	</div>
+	<div id="demo"></div>
+
+	<script>
+		//여러명의 정보를 저장하기 위한 (배열) 저장소 준비
+		var persons = [];
+		 
+		//person 객체를 만들기 위한 함수 선언
+		function Person(name, phone) {
+
+			// 프로퍼티 구성
+			// this.변수 표현은 프로퍼티
+			// 변수 표현은 지역변수
+			this.name = name;
+			this.phone = phone;
+			
+		}
+
+		function myFunction() {
+			
+			// 사용자가 입력한 자료 확인
+			var name = document.getElementById("name").value;
+			var phone = document.getElementById("phone").value;
+			
+			var person = new Person(name, phone);
+			
+			//배열 저장소에 저장
+			persons.push(person);
+
+			var tmp = "이름 : " + person.name + "<br>" + "전화번호 : " + person.phone;
+
+			document.getElementById("demo").innerHTML = tmp;
+		}
+	</script>
+
+</body>
+</html>

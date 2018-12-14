@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+table {
+ border-collapse: collapse;
+ width: 100%;
+}
+
+th, td {
+ padding: 8px;
+ text-align: left;
+ border-bottom: 1px solid #ddd;
+}
+
+div.input {
+	margin-bottom: 10px;
+	padding: 10px;
+	border: 1px solid #e5e5e5;
+}
+</style>
+
+</head>
+<body>
+
+	<h1>성적관리 v5.0 (Javascript Object + Javascript Array 버전)</h1>
+	
+    <div class="input">
+        이름 : <input type="text" id="name">
+        과목1 : <input type="number" id="sub1">
+        과목2 : <input type="number" id="sub2">
+        과목3 : <input type="number" id="sub3">
+        <button onclick="scoreAdd()">성적 등록</button>
+    </div>
+    
+    <div class="input">
+        <button onclick="scorePrint()">성적 출력</button>
+    </div>
+    
+    <div class="input">
+    	<input type="radio" name="searchKey"  value="sid"> 번호 
+    	<input type="radio" name="searchKey" value="name" checked="checked"> 이름<br> 
+        검색할 단어 : <input type="text" id="searchValue">
+        <button onclick="scoreSearch()">성적 검색</button>
+    </div>
+    <div id="demo"></div>
+    
+	<script>
+	
+		//성적 정보 저장용 (배열)저장소 준비
+		var scores = [];
+		
+		//성적 정보(Object-property, method) 입력 진행 함수
+		function scoreAdd() {
+			
+			//자동 번호 증가 액션 구현
+			var count = scores.length + 1;
+			var sid = "S" + ((count<10)?"0"+count:count);
+			
+			//사용자가 입력한 자료 확인
+			var name = document.getElementById("name").value;
+			var sub1 = document.getElementById("sub1").value;
+			var sub2 = document.getElementById("sub2").value;
+			var sub3 = document.getElementById("sub3").value;
+			
+			//주의) 외부에 입력된 자료는 자료형이 문자열이므로 
+			//숫자 자료형으로 변환 필요
+			//parseInt(), parseFloat() 함수
+			sub1 = parseInt(sub1);
+			sub2 = Number(sub2);
+			sub3 = new Number(sub3);
+			
+			//성적 정보 객체 생성 함수 호출 및 결과 반환
+			var score = new Score(sid, name, sub1, sub2, sub3);
+			
+			//(배열)저장소에 성적 정보 객체 저장
+			scores.push(score);
+			
+			//결과 메시지 출력
+			var txt = "성적 정보가 등록되었습니다.";
+			document.getElementById("demo").innerHTML = txt;
+			
+		}
+		
+		//성적 정보에 대한 Score Object 생성을 위한 함수 선언
+		function Score(sid, name, sub1, sub2, sub3) {
+
+			
+			//멤버(property, method) 추가하는 과정
+			this.sid = sid;
+			this.name = name;
+			this.sub1 = sub1;
+			this.sub2 = sub2;
+			this.sub3 = sub3;
+			
+			//총점, 평균, 석차 메소드 구성
+			this.tot = function () {
+				return this.sub1 + this.sub2 + this.sub3;
+			};
+			this.avg = function () {
+				return this.tot()/3;
+			};
+			this.rank = function (arr) {
+				var r = 1;
+				for (var a=0; a<arr.length; ++a) {
+					var t = arr[a];
+					if (this.tot() < t.tot()) {
+						++r;
+					}
+				}
+				return r;
+			};
+			
+			
+		}
+		
+		//전체 출력 진행 함수
+		function scorePrint() {
+			
+			//출력 전용 함수 호출
+			//출력 대상은 (배열)저장소에 저장된 자료 전체
+			print(scores);
+			
+		}
+		
+		//검색 진행 함수
+		function scoreSearch() {
+			
+			//사용자가 선택한 라디오 버튼에 대한 분석
+			var searchKey = document.getElementsByName("searchKey");
+	        var key = "";
+	        for (var i=0; i < searchKey.length; i++) {
+	        	var temp = searchKey[i];	 
+	           if (temp.checked) {
+	        	   key = temp.value;
+	           }
+	        }
+	        
+	        //사용자가 입력한 검색 단어 확인
+			var searchValue = document.getElementById("searchValue").value;
+
+	        //검색 결과 저장을 위한 임시 배열 준비
+			var temps = [];
+	        
+	        //검색 진행 및 결과 저장
+			for (var i = 0; i < scores.length; ++i) {
+				var t = scores[i];
+				if (t[key] == searchValue) {
+					temps.push(t);
+				}
+			}
+			
+	        //검색 결과 출력
+			print(temps);
+			
+		}
+		
+		//출력 전용 함수
+		//외부에서 전달된 배열의 자료를 출력하는 액션 구현
+		function print(arr) {
+			
+			//출력을 위한 테이블 태그 동적 생성
+			//방법1.createElement(), createTextNode(), appendChild() 함수
+			//방법2.문자열에 태그를 작성하고 innerHTML 속성에 할당
+			
+			var count = arr.length;
+			var txt = "";
+			
+			txt += "<div>총 "+count+"건</div>"
+			
+			if (count == 0) {
+				txt += "출력 대상이 없습니다.";
+			} else {
+			
+				txt += "<table>";
+				txt += "<tbody>";
+				txt += "<tr><th>번호</th><th>이름</th><th>과목1</th><th>과목2</th><th>과목3</th><th>총점</th><th>평균</th><th>석차</th></tr>";
+	
+				//배열 요소 탐색 및 결과 출력
+				for (var a=0; a<count; ++a) {
+					var t = arr[a];
+					txt += "<tr>";
+					txt += "<td>"+t.sid+"</td>";
+					txt += "<td>"+t.name+"</td>";
+					txt += "<td>"+t.sub1+"</td>";
+					txt += "<td>"+t.sub2+"</td>";
+					txt += "<td>"+t.sub3+"</td>";
+					txt += "<td>"+t.tot()+"</td>";
+					txt += "<td>"+t.avg().toFixed(1)+"</td>";
+					
+					//주의) 석차 계산을 위해서 자료 전체를 매개변수에 전달 필요
+					txt += "<td>"+t.rank(scores)+"</td>";
+					
+					txt += "</tr>";
+				}
+				
+				txt += "</tbody>";
+				txt += "</table>";
+			}
+			
+			document.getElementById("demo").innerHTML = txt;
+		}
+		
+	</script>
+</body>
+</html>

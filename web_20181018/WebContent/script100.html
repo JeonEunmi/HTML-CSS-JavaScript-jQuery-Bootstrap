@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+div.input {
+	margin-bottom: 10px;
+	padding: 10px;
+	border: 1px solid #e5e5e5;
+}
+</style>
+
+</head>
+<body>
+
+	<h1>JavaScript Object(사용자 정의 객체)</h1>
+
+	<div class="input">
+	이름:
+	<input type="text" id="name"> 전화번호:
+	<input type="text" id="phone"> 이메일:
+	<input type="text" id="email"> 등록일:
+	<input type="date" id="regDate">
+	<button onclick="myFunction01()">신규 회원 정보 등록</button>
+	</div>
+	<div class="input">
+	<button onclick="myFunction02()">회원 정보 출력</button>
+	</div>
+	<div id="demo"></div>
+
+	<script>
+		/* 
+		---------------------------------
+		문제)
+		- 회원 정보 입력, 회원 정보 전체 출력
+		- 회원번호('M01' 형태로 자동 증가), 이름, 전화번호, 이메일, 등록일(yyyy-MM-dd)
+		- Javascript Array를 이용해서 자료 저장
+		 */
+
+		var memberArray = [];
+
+		//입력
+		function myFunction01() {
+
+			var m = "";
+
+			m = memberArray.length + 1 >= 10 ? "M" : "M0";
+
+			var count = m + (memberArray.length + 1);
+			var name = document.getElementById("name").value;
+			var phone = document.getElementById("phone").value;
+			var email = document.getElementById("email").value;
+			var regDate = document.getElementById("regDate").value;
+
+			var member = new Member(count, name, phone, email, regDate);
+
+			memberArray.push(member);
+
+			document.getElementById("demo").innerHTML = "회원이 등록되었습니다."
+
+		}
+
+		//출력
+		function myFunction02() {
+
+			var txt = "";
+
+			txt += "<div>" + "총 : " + memberArray.length + " 건" + "</div>"
+
+			txt += "<table><tbody>";
+			txt += "<tr><th>회원아이디</th><th>이름</th>";
+			txt += "<th>전화번호</th><th>이메일</th><th>등록일</th>";
+
+			for (var i = 0; i < memberArray.length; i++) {
+
+				txt += "<tr><th>" + memberArray[i].number + "</th><th>"
+						+ memberArray[i].name + "</th><th>" + memberArray[i].phone
+						+ "</th>";
+				txt += "<th>" + memberArray[i].email + "</th><th>" + memberArray[i].regDate
+						+ "</th><tr>";
+
+			}
+
+			txt += "</tbody></table>";
+
+			document.getElementById("demo").innerHTML = txt;
+		}
+
+		function Member(count, name, phone, email, regDate) {
+
+			this.number = count;
+			this.name = name;
+			this.phone = phone;
+			this.email = email;
+			this.regDate = regDate;
+
+		}
+	</script>
+</body>
+</html>

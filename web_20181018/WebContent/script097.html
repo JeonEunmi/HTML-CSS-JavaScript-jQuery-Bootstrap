@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 신현식</title>
+
+<link rel="stylesheet" type="text/css"
+   href="resources/style/style01.css">
+
+<style>
+table {
+ border-collapse: collapse;
+ width: 100%;
+}
+
+th, td {
+ padding: 8px;
+ text-align: center;
+ border-bottom: 1px solid #ddd;
+}
+
+div.input {
+   margin-bottom: 10px;
+   padding: 10px;
+   border: 1px solid #e5e5e5;
+}
+</style>
+
+</head>
+<body>
+
+    <div class="input">
+        이름 : <input type="text" id="name">
+        과목1 : <input type="number" max = "100" min = "0" id="sub1">
+        과목2 : <input type="number" max = "100" min = "0" id="sub2">
+        과목3 : <input type="number" max = "100" min = "0" id="sub3">
+        <button onclick="scoreAdd()">성적 등록</button>
+    </div>
+    
+    <div class="input">
+        <button onclick="scorePrint()">성적 출력</button>
+    </div>
+    
+    
+    <div class="input">
+       <input type="radio" name="searchKey"  value="sid"> 회원번호 
+       <input type="radio" name="searchKey" value="name" checked="checked"> 이름 <br>   
+        검색할 단어 : <input type="text" id="searchValue">
+        <button onclick="scoreSearch()">성적 검색</button>
+    </div>
+    <div id="demo"></div>
+<script>
+
+var scores = [];
+
+//성적 정보(Object-property, method) 입력 진행 함수
+function scoreAdd() {
+   
+   var count = scores.length +1;
+   var sid = "S"+ ((count < 10)?"0"+ count : count) ; 
+   var name = document.getElementById("name").value;
+   
+   var sub1 = parseInt(document.getElementById("sub1").value);
+   var sub2 = parseInt(document.getElementById("sub2").value);
+   var sub3 = parseInt(document.getElementById("sub3").value);
+   
+   var obj = createObject(sid, name, sub1, sub2, sub3);
+   scores.push(obj);
+   
+   var txt = "성적 정보가 등록되었습니다.";
+   document.getElementById("demo").innerHTML = txt;
+   
+}
+
+function createObject(sid, name, sub1, sub2, sub3) {
+   var score = new Object();
+   
+   score.sid = sid;
+   score.name = name;
+   score.sub1 = sub1;
+   score.sub2 = sub2;
+   score.sub3 = sub3;
+   
+   score.total = function() {
+      return this.sub1 + this.sub2 + this.sub3;
+      };
+   
+   score.avg = function() {
+      return this.total()/3;
+      }; 
+   
+   score.rank = function(arr) {
+      var r = 1;
+      for (var a = 0; a<arr.length; ++a) {
+         var t = arr[a];
+         if(this.total() < t.total()){
+            ++r;
+         }
+      }
+      return r;
+   };
+   
+   return score;
+}
+
+function scorePrint() {
+   
+   print(scores);
+   
+}
+
+function scoreSearch() {
+   
+}
+
+function print(arr) {
+   
+   var count = scores.length;
+   var txt = "";
+   
+   txt += "<div>총" + count +"건</div>";
+   
+   if (count == 0) {
+      txt += "출력 대상이 없습니다.";
+   } else {
+   txt += "<table><tbody>";
+   txt += "<tr><th>아이디</th><th>이름</th><th>과목1</th><th>과목2</th><th>과목3</th>";
+   txt += "<th>총점</th><th>평균</th><th>석차</th></tr>";
+   
+   for(var a = 0; a < scores.length; ++a){
+      var t = arr[a];
+      txt += "<tr><td>"+t.sid+"</td><td>"+t.name+ "</td><td>"+t.sub1+ "</td><td>"+t.sub2+"</td><td>"+t.sub3+"</td>";
+      txt += "<td>" +t.total()+ "</td><td>"+t.avg().toFixed(1)+"</td><td>"+t.rank(scores)+"</td>";
+      txt += "</tr>";
+      }
+   }
+   
+   txt += "</tbody></table>";
+   
+   document.getElementById("demo").innerHTML = txt;
+   
+}
+   
+
+
+
+</script>
+
+
+</body>
+</html>

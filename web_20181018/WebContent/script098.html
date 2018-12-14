@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+
+	<h1>JavaScript Object(사용자 정의 객체)</h1>
+
+	<button onclick="myFunction()">Person 객체 생성</button>
+	<div id="demo"></div>
+
+	<script>
+		/*
+		JavaScript Object Constructors
+		- 자바 스크립트의 내장객체(Math, Date, )
+		
+		function 		
+		프로퍼티;
+		메소드;
+		}
+		
+		 주의) 객체명의 첫 글자는 대문자로 표기
+		 */
+
+		//person 객체를 만들기 위한 함수 선언
+		function Person() {
+
+			// 프로퍼티 구성
+			this.name = "HONG";
+			this.phone = "010-2345-1234";
+		}
+		 
+
+		function myFunction() {
+
+			// Person 객체 생성 및 자료 저장
+			var person = new Person();
+
+			// Person 객체의 프로퍼티 접근
+			
+			var name = person.name;
+			// 변수처리가능
+			var phone = person["phone"];
+			
+			var tmp = "이름 : " + name + "<br>" + "전화번호 : " + phone;
+			
+			document.getElementById("demo").innerHTML = tmp;
+		}
+	</script>
+
+</body>
+</html>
