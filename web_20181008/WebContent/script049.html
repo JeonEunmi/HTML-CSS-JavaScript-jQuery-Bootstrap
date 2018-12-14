@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+
+	<h1>Finding HTML Elements</h1>
+
+	<button onclick="myFunction()">엘리먼트 탐색</button>
+	
+	<!-- class="식별자"는 동일한 식별자 여러개 지정 가능 -->
+	<p class="demo">테스트</p>
+	<!-- 동일한 식별자가 더 있는 경우 탐색 가능 -->
+	<p class="demo">TEST</p>
+
+
+	<script>
+		/* 
+		 Finding HTML Elements
+		 
+		 Method	Description
+		 document.getElementById(id)	Find an element by element id
+		 document.getElementsByTagName(name)	Find elements by tag name
+		 document.getElementsByClassName(name)	Find elements by class name
+		 document.getElementsByName() Returns a NodeList containing all elements with a specified name
+		 document.querySelector() returns the first element that matches a specified CSS selector(s) in the document
+		 document.querySelectorAll() returns all elements in the document that matches a specified CSS selector(s)
+		 */
+
+		function myFunction() {
+			
+			//주의) CSS Selector(s)
+		    document.querySelector(".demo").innerHTML = "Hello, World!";
+			
+		}
+	</script>
+</body>
+</html>

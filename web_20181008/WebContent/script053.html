@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+
+.demo {
+	background-color: yellow;
+	padding: 5px;
+	margin: 10px 0px 10px 0px;
+}
+
+</style>
+
+</head>
+<body>
+
+	<h1>Changing HTML Elements</h1>
+
+	<button onclick="myFunction()">엘리먼트 상태값 변경</button>
+
+	<!-- class="식별자"는 동일한 식별자 여러개 지정 가능 -->
+	<div class="demo" title="테스트">테스트</div>
+	<!-- 동일한 식별자가 더 있는 경우 탐색 가능 -->
+	<div class="demo" title="TEST">TEST</div>
+
+	<script>
+		/* 
+		 Changing HTML Elements
+		 
+		 Method	Description
+		 element.innerHTML =  new html content	Change the inner HTML of an element
+		 element.innerText =  new text content	Change the inner Text of an element
+		 element.attribute = new value	Change the attribute value of an HTML element
+		 element.setAttribute(attribute, value)	Change the attribute value of an HTML element
+		 element.style.property = new style	Change the style of an HTML element
+		 */
+		 
+		function myFunction() {
+			var obj = document.querySelector(".demo");
+			obj.innerHTML = "<h1>Hello, World!</h1>";
+			obj.setAttribute("title", "Hello, World!");
+		}
+	</script>
+</body>
+</html>

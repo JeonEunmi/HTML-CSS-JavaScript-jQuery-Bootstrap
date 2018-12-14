@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+	<h1>JavaScript HTML DOM</h1>
+
+	<!-- 특정 id 식별자를 가진 엘리먼트 준비 -->
+	<p id="demo">테스트</p>
+
+
+	<script>
+		/* 
+		 JavaScript HTML DOM(Document Object Model)
+
+		 With the HTML DOM, JavaScript can access and change all the elements of an HTML document.
+		 
+		 JavaScript can change all the HTML elements in the page
+		 JavaScript can change all the HTML attributes in the page
+		 JavaScript can change all the CSS styles in the page
+		 JavaScript can remove existing HTML elements and attributes
+		 JavaScript can add new HTML elements and attributes
+		 JavaScript can react to all existing HTML events in the page
+		 JavaScript can create new HTML events in the page
+
+		 */
+		 
+		var a = 10;
+		var b = 20;
+		
+		var c = a + b;
+		var d = a * b;
+		
+		var result = "" + a + " + " + b + " = " + c + "<br>\n";
+		result += a + " * " + b + " = " + d + "<br>\n";
+		//console.log(result);
+		
+		document.getElementById("demo").innerHTML = result;
+		 
+	</script>
+</body>
+</html>

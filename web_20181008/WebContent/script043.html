@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+	<h1>JavaScript Function</h1>
+
+	<!-- 특정 id 식별자를 가진 엘리먼트 준비 -->
+	<p id="demo">테스트</p>
+	
+	<!-- 함수 호출과 연결될 객체 준비 -->
+	<button onclick="myFunction()">클릭이벤트</button>
+
+	<script>
+		/* 
+		 JavaScript Function
+
+		 JavaScript functions are defined with the function keyword.
+
+		 You can use a function declaration or a function expression.
+		 
+		 형식)
+		 function functionName(parameters) {
+			  code to be executed
+		 }
+
+		 주의) Declared functions are not executed immediately. 
+		 They are "saved for later use", and will be executed later, when they are invoked (called upon).
+		 */
+
+		function myFunction() {
+			document.getElementById("demo").innerHTML = "Hello, World!";
+		}
+		 
+	</script>
+</body>
+</html>

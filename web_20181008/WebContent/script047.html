@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+
+	<h1>Finding HTML Elements</h1>
+
+	<button onclick="myFunction()">엘리먼트 탐색</button>
+	
+	<!-- 엘리먼트 이름을 기준으로 탐색 진행 -->
+	<p>테스트</p>
+	<p>TEST</p>
+
+
+	<script>
+		/* 
+		 Finding HTML Elements
+		 
+		 Method	Description
+		 document.getElementById(id)	Find an element by element id
+		 document.getElementsByTagName(name)	Find elements by tag name
+		 document.getElementsByClassName(name)	Find elements by class name
+		 document.getElementsByName() Returns a NodeList containing all elements with a specified name
+		 document.querySelector() returns the first element that matches a specified CSS selector(s) in the document
+		 document.querySelectorAll() returns all elements in the document that matches a specified CSS selector(s)
+		 */
+
+		function myFunction() {
+			
+			//주의) 여러개의 객체가 동시에 반환된다.
+			var objs = document.getElementsByTagName("p");
+			
+			//주의) 특정 인덱스를 이용해서 객체 탐색 진행 필요
+			for (var a=0; a<objs.length; ++a) {
+				objs[a].innerHTML = "Hello, World!";
+			}
+		}
+	</script>
+</body>
+</html>

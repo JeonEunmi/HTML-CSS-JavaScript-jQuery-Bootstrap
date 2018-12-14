@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+	<h1>JavaScript Events</h1>
+
+	<!-- 외부 입력을 위한 폼 엘리먼트 준비 -->
+	숫자1 :	<input type="number" id="a" value="0"> <br> 
+	숫자2 : <input type="number" id="b" value="0"> <br>
+
+	<!-- 함수 호출을 위한 객체 준비 -->
+	<!-- 버튼에 클릭 이벤트 발생시 함수 호출과 연결될 예정이다 -->
+	<button onclick="myFunction()">결과보기</button>
+
+	<!-- 결과보기를 위한 블럭 영역 준비 -->
+	<p id="demo"></p>
+
+
+	<script>
+		/* 
+		 JavaScript Events
+
+		 An HTML event can be something the browser does, or something a user does.
+
+		 Here are some examples of HTML events:
+
+		 An HTML web page has finished loading
+		 An HTML input field was changed
+		 An HTML button was clicked
+
+		 */
+
+		function myFunction() {
+			 //주의) value 프로퍼티는 string 타입을 반환한다.
+			var a = document.getElementById("a").value;
+			var b = document.getElementById("b").value;
+
+			//산술 연산 +
+			var c = parseInt(a) + parseInt(b);
+			var d = a * b;
+
+			//문자열 결합 연산 +
+			var result = "" + a + " + " + b + " = " + c + "<br>\n";
+			result += a + " * " + b + " = " + d + "<br>\n";
+			//console.log(result);
+
+			document.getElementById("demo").innerHTML = result;
+		}
+	</script>
+</body>
+</html>

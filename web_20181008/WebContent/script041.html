@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+	<h1>JavaScript HTML DOM</h1>
+
+	<!-- 특정 id 식별자를 가진 엘리먼트 준비 -->
+	<p id="demo">테스트</p>
+
+
+	<script>
+		/* 
+		 JavaScript HTML DOM(Document Object Model)
+
+		 With the HTML DOM, JavaScript can access and change all the elements of an HTML document.
+		 
+		 JavaScript can change all the HTML elements in the page
+		 JavaScript can change all the HTML attributes in the page
+		 JavaScript can change all the CSS styles in the page
+		 JavaScript can remove existing HTML elements and attributes
+		 JavaScript can add new HTML elements and attributes
+		 JavaScript can react to all existing HTML events in the page
+		 JavaScript can create new HTML events in the page
+
+		 */
+		 
+		 
+		 /* 
+		 The getElementById Method
+		 - 특정 id 식별자를 가진 엘리먼트 탐색
+		 */
+		 //var a = document.getElementById("demo");
+		
+		 /* 
+		 The innerHTML Property
+		 - 탐색된 엘리먼트의 콘텐츠 상태값 읽기, 쓰기
+		 - 읽기 상태인 경우 객체.innerHTML;
+		 - 쓰기 상태인 경우 객체.innerHTML = 값;
+		 */ 
+		 //a.innerHTML = "Hello, World!";
+		
+		 //액션 여러개를 이어서 실행 가능 -> .(dot) 연산자
+		 document.getElementById("demo").innerHTML = "Hello, World!";
+		 
+	</script>
+</body>
+</html>

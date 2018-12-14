@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+
+	<h1>Finding HTML Elements</h1>
+
+	<button onclick="myFunction()">엘리먼트 탐색</button>
+	
+	<form action="" method="post">
+
+		아이디<br>
+		<input type="text"><br>
+		패스워드<br>
+		<input type="password"><br>
+		<input type="radio" name="mode" checked> 수강생 
+		<input type="radio" name="mode"> 강사 
+		<input type="radio" name="mode"> 관리자<br>
+		<input type="submit" value="로그인">
+		<br>
+		
+	</form>
+
+
+	<script>
+		/* 
+		 Finding HTML Elements
+
+		 Method	Description
+		 document.getElementById(id)	Find an element by element id
+		 document.getElementsByTagName(name)	Find elements by tag name
+		 document.getElementsByClassName(name)	Find elements by class name
+		 document.getElementsByName() Returns a NodeList containing all elements with a specified name
+		 document.querySelector() returns the first element that matches a specified CSS selector(s) in the document
+		 document.querySelectorAll() returns all elements in the document that matches a specified CSS selector(s)
+		 */
+
+		function myFunction() {
+
+			//주의) 여러개의 객체가 동시에 반환된다.
+			var objs = document.getElementsByName("mode");
+
+			//주의) 특정 인덱스를 이용해서 객체 탐색 진행 필요
+			//주의) 라디오 버튼 객체는 여러개 중에서 한 개만 checked 상태가 될 수 있다.
+			objs[1].checked = true;
+		}
+	</script>
+</body>
+</html>
