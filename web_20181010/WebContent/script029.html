@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+
+	<h1>Finding HTML Objects</h1>
+
+	<button onclick="myFunction()">HTML Object Collections</button>
+
+	<div id="collections">
+		<!-- 개별적인 식별자가 없는 <img> 태그 준비 -->
+		<img src="resources/img/5mf710q8sgvg016fcn9701.png">
+		<img src="resources/img/5mf710q8sgvg016fcn9702.png">
+		<img src="resources/img/5mf710q8sgvg016fcn9703.png">
+		<img src="resources/img/5mf710q8sgvg016fcn9704.png">
+	</div>
+
+	<div id="demo">테스트</div>
+
+	<script>
+		/*
+		 document.anchors	Returns all <a> elements that have a name attribute
+		 document.body	Returns the <body> element
+		 document.documentElement	Returns the <html> element
+		 document.forms	Returns all <form> elements
+		 document.head	Returns the <head> element
+		 document.images	Returns all <img> elements
+		 document.links	Returns all <area> and <a> elements that have a href attribute
+		 document.scripts	Returns all <script> elements
+		 document.title	Returns the <title> element
+		 */
+
+		function myFunction() {
+
+			document.getElementById("demo").innerHTML = 
+				"source of image : " + document.images[0].src;
+		}
+	</script>
+
+</body>
+</html>

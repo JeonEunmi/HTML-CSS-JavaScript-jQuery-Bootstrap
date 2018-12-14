@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+
+	<h1>Java Script HTML DOM changing HTML</h1>
+
+	<button onclick="myFunction(1)">ON</button>
+	<button onclick="myFunction(0)">OFF</button>
+
+	<div>
+		<!-- 전구 그림이 ON, OFF 상태를 표시할 수 있도록 두개의 -->
+		<!-- src 속성의 값을 동적으로 지정하는 스크립트 코드 연결 -->
+		<img id="img01" src="resources/img/pic_bulboff.gif">
+	</div>
+
+
+	<script>
+	/*함수 선언시 외부에서 전달되는 값을 받을 수 있도록 매개변수 선언*/
+		function myFunction(a){
+			var obj = document.getElementById("img01");
+			if(a == 0){
+				obj.src = "resources/img/pic_bulboff.gif";
+			} else {
+				obj.src = "resources/img/pic_bulbon.gif";
+				
+			}
+		}
+	</script>
+
+</body>
+</html>

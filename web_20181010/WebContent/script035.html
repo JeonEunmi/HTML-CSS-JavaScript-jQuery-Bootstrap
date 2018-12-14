@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+
+	<h1>JavaScript HTML DOM Node Lists</h1>
+
+	<button onclick="myFunction()">click</button>
+
+	<div id="collections">
+		<!-- 개별적인 식별자가 없는 <img> 태그 준비 -->
+		<img src="resources/img/5mf710q8sgvg016fcn9701.png"> <img
+			src="resources/img/5mf710q8sgvg016fcn9702.png"> <img
+			src="resources/img/5mf710q8sgvg016fcn9703.png"> <img
+			src="resources/img/5mf710q8sgvg016fcn9704.png">
+	</div>
+
+	<div id="demo">테스트</div>
+
+
+	<script>
+		/*
+		The HTMLCollection Object
+		The getElementsByTagName() method returns an HTMLCollection object.
+
+		An HTMLCollection object is an array-like list (collection) of HTML elements.
+		 */
+
+		function myFunction() {
+
+		//특정 노드(div 태그)를 기준으로 앨리먼트 기준 탐색
+		//element node만 반환한다.
+		var nodeObj = document.getElementById("collections");
+		var a = nodeObj.getElementsByTagName("img").length;
+		
+		for(var b=0; b<a; ++b){
+			var temp = nodeObj.getElementsByTagName("img")[b];
+			console.log(temp.nodeType);
+			console.log(temp.nodeName);
+			console.log(temp.nodeValue);
+		}
+		document.getElementById("demo").innerHTML = a;
+		}
+	</script>
+
+</body>
+</html>

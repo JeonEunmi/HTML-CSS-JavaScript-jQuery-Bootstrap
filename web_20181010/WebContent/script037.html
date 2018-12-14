@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+</style>
+
+</head>
+<body>
+
+	<h1>구구단 출력</h1>
+
+	원하는 구구단: <input type = "number" min = "1" max = "9" value = "5" id = "num">
+	<button onclick="myFunction()">구구단 출력</button>
+	
+	<div id="demo">테스트</div>
+	<script>
+
+	function myFunction() {
+		
+		var nodeObj = document.getElementById("num").value;
+		var gugudan = "";
+		
+		for(var b=1; b<10; ++b){
+			
+			gugudan += nodeObj + "*" + b + " = " + nodeObj * b + "<br>";
+			
+		}
+		
+		document.getElementById("demo").innerHTML =gugudan;
+	}
+	
+	</script>
+
+</body>
+</html>
