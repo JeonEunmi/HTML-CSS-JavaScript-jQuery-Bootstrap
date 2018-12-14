@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<style>
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+div.input {
+	margin-bottom: 10px;
+	padding: 10px;
+	border: 1px solid #e5e5e5;
+}
+</style>
+
+<script src="resources/script/util.js"></script>
+
+
+
+</head>
+<body onload="accountCheck()">
+
+	<h1>계좌 관리v2.0 (Javascript Object + Javascript Array 버전)</h1>
+
+	<div class="input">
+		계좌번호 <input type="text" id="accountNumber1">
+		<button onclick="accountPrint()">계좌 조회</button>
+	</div>
+
+	<div class="input">
+		계좌번호 <input type="text" id="accountNumber2"> <br> 입금액 <input
+			type="number" id=depositWon>
+		<button onclick="deposit()">계좌 입금</button>
+	</div>
+
+	<div class="input">
+		계좌번호 <input type="text" id="accountNumber3"> <br> 입금액 <input
+			type="number" id="withdrawWon">
+		<button onclick="withdraw()">계좌 출금</button>
+	</div>
+
+	<div class="input">
+		계좌번호 <input type="text" id="accountNumber4">
+		<button onclick="accountPrint2()">계좌 거래 내역</button>
+	</div>
+	<div id="demo"></div>
+
+	<script>
+		var accounts = [];
+		var historys = [];
+
+		function accountCheck() {
+
+			/* var count = accounts.length +1;
+			var aid = "A" + ((count<10)? "0"+count : count);
+			var accountNumber = "2018010101";
+			var balance = 10000;
+			var createDate = "2018-10-01";
+			var lastDate = today();
+			
+			var obj = new AccountObj(aid, accountNumber, balance, createDate, lastDate); */
+
+			/* new AccountObj("2018030101", 10000, "2018-03-01", "2018-03-01"); */
+
+			accounts.push(new AccountObj("2018030101", 10000, "20180301",
+					"20180301"));
+			historys.push(new AccountHistoryObj("2018030101", 50000,
+					"20180301", "입금", 60000));
+			historys.push(new AccountHistoryObj("2018030101", 20000,
+					"20180301", "출금", 40000));
+
+			//print1(accounts);
+
+		}
+
+		function AccountObj(accountNumber, balance, createDate, lastDate) {
+			this.accountNumber = accountNumber;
+			this.balance = balance;
+			this.createDate = createDate;
+			this.lastDate = lastDate;
+			this.toString = function() {
+				return this.accountNumber + " / " + this.balance + " / "
+						+ this.createDate + " / " + this.lastDate;
+			};
+		}
+		/* 계좌번호 / 입출금액 / 입출금일 / 입출금구분 / 잔액 */
+
+		function AccountHistoryObj(accountNumber, amount, amountDate, note,
+				balance) {
+
+			this.accountNumber = accountNumber;
+			this.amount = amount;
+			this.amountDate = amountDate;
+			this.note = note;
+			this.balance = balance;
+			this.toString = function() {
+				return this.accountNumber + " / " + this.amount + " / "
+						+ this.amountDate + " / " + this.note + " / "
+						+ this.balance;
+			};
+
+		}
+
+		function print1(arr) {
+			var count = arr.length;
+			var txt = "";
+
+			txt += "계좌번호 / 잔액 / 계좌생성일 / 마지막거래일" + "<br>"
+			for (var a = 0; a < count; ++a) {
+				var temp = arr[a];
+
+				txt += temp.toString() + "<br>";
+			}
+			document.getElementById("demo").innerHTML = txt;
+		}
+
+		function print2(arr) {
+			var count = arr.length;
+			var txt = "";
+
+			txt += "계좌번호 / 입출금액 / 입출금일 / 입출금구분 / 잔액" + "<br>"
+			for (var a = 0; a < count; ++a) {
+				var temp = arr[a];
+
+				txt += temp.toString() + "<br>";
+			}
+			document.getElementById("demo").innerHTML = txt;
+		}
+
+		function search1() {
+
+			var temp = [];
+
+			var account = document.getElementById("accountNumber1").value;
+
+			for (var a = 0; a < accounts.length; ++a) {
+				var b = accounts[a]
+				if (account == b.accountNumber) {
+					temp.push(b);
+				}
+
+			}
+
+			print1(temp);
+		}
+
+		function search2() {
+
+			var temp = [];
+
+			var account = document.getElementById("accountNumber4").value;
+
+			console.log(account);
+			for (var a = 0; a < historys.length; ++a) {
+				var b = historys[a]
+				if (account == b.accountNumber) {
+					temp.push(b);
+				}
+
+			}
+
+			print2(temp);
+		}
+
+		/* function accountSearch() {
+
+		   var account = document.getElementById("accountNumber").value;
+		   var temps = [];
+		   for (var a = 0; a < accounts.length; ++a) {
+		      var temp = accounts[a];
+		      if (temp.account == account) {
+		         temps.push(temp);
+		      }
+		   }
+		   return temps;
+
+		} */
+
+		/*       */
+
+		function deposit() {
+			/* 계좌번호 / 입출금액 / 입출금일 / 입출금구분 / 잔액 */
+			var accountNumber = document.getElementById("accountNumber2").value;
+			var depositWon = parseInt(document.getElementById("depositWon").value);
+			var amountDate = today();
+
+			var txt = "";
+			for (var a = 0; a < accounts.length; ++a) {
+
+				if (accounts[a].accountNumber == accountNumber
+						&& historys[a].accountNumber == accountNumber) {
+					accounts[a].balance += depositWon;
+					historys.push(new AccountHistoryObj(accountNumber,
+							depositWon, amountDate, "입금", accounts[a].balance));
+
+					txt += "입금완료";
+				} else {
+					txt += "입금실패!";
+				}
+
+			}
+			document.getElementById("demo").innerHTML = txt;
+		}
+
+		function withraw() {
+			/* 계좌번호 / 입출금액 / 입출금일 / 입출금구분 / 잔액 */
+			var accountNumber = document.getElementById("accountNumber2").value;
+			var depositWon = parseInt(document.getElementById("depositWon").value);
+			var amountDate = today();
+
+			var txt = "";
+			for (var a = 0; a < accounts.length; ++a) {
+
+				if (accounts[a].accountNumber == accountNumber
+						&& historys[a].accountNumber == accountNumber) {
+					accounts[a].balance += depositWon;
+					historys.push(new AccountHistoryObj(accountNumber,
+							depositWon, amountDate, "입금", accounts[a].balance));
+
+					txt += "입금완료";
+				} else {
+					txt += "입금실패!";
+				}
+
+			}
+			document.getElementById("demo").innerHTML = txt;
+		}
+
+		function accountPrint() {
+
+			//print1(accounts);
+			//print1(accountSearch());
+			print1(search1());
+		}
+
+		function accountPrint2() {
+
+			//print2(historys);
+			//print2(search1());
+			print2(search2());
+		}
+	</script>
+</body>
+</html>

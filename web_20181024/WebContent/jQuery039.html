@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css" href="resources/style/style01.css">
+
+<style>
+/* 
+.클래스식별자 : class="식별자"
+#아이디식별자 : id="식별자"
+* : 모든 엘리먼트
+A B : A엘리먼트의 자손 B을 대상으로 스타일 적용 
+*/ 
+.ancestors * {
+
+	/* 엘리먼트 특성(인라인, 블럭)에 관계없이 모두 블럭 상태로 만든다. */ 
+    display: block;
+    
+    /* 블럭 엘리먼트의 경계선 지정 */
+    border: 2px solid lightgrey;
+
+	/* 전경색 */    
+    color: lightgrey;
+    
+    /* 블럭 엘리먼트의 안쪽 여백 */
+    padding: 5px;
+    
+    /* 블럭 엘리먼트의 바깥쪽 여백 */
+    margin: 15px;
+}
+</style>
+
+<!-- jQuery CDN -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+	/* 
+	jQuery Traversing
+	jQuery traversing, which means "move through", are used to "find" (or select) HTML elements based on their relation to other elements. Start with one selection and move through that selection until you reach the elements you desire.
+	- 엘리먼트의 관계를 이용한 노드 탐색하는 방법
+	- parent(부모), ancestor(조상), child(자식), descendant(자손), siblings(형제)
+	
+	jQuery Traversing - Filtering
+	- 조건(순번)에 의한 탐색 진행
+	
+	The first() method returns the first element of the specified elements.
+	- 제시하는 엘리먼트들 중에 첫 번째 엘리먼트 반환
+	
+	The last() method returns the last element of the specified elements.
+	- 제시하는 엘리먼트들 중에 마지막 엘리먼트 반환
+	
+	The eq() method returns an element with a specific index number of the selected elements.
+	- 제시하는 엘리먼트들 중에 특정 번째 엘리먼트 반환
+	
+	*/
+/* 	$(document).ready(function() {
+
+		
+		//특정 엘리먼트(A) 하위에 존재하는 엘리먼트(B) 대상
+		//->A B
+		
+		//특정 엘리먼트들 탐색 결과에서 특정 번째 엘리먼트만 스타일 지정
+		//주의) 인덱스는 0부터 시작한다
+		$(".ancestors div").eq(0).css("border", "2px solid red");
+	
+	}); */
+</script>
+
+</head>
+<body>
+
+	<h1>jQuery Traversing</h1>
+
+	<div class="ancestors">
+	  <div style="width:500px;">div (great-grandparent)
+	    <ul>ul (grandparent)  
+	      <li>li (direct parent)
+	        <span>span</span>
+	      </li>
+	    </ul>   
+	  </div>
+	
+	  <div style="width:500px;">div (grandparent)   
+	    <p>p (direct parent)
+	        <span>span</span>
+	      </p> 
+	  </div>
+
+	  <div style="width:500px;">div (grandparent)   
+	    <p>p (direct parent)
+	        <span>span</span>
+	      </p> 
+	  </div>
+
+	</div>
+
+	<script>
+		/* Javascript */ 
+		//문제) 특정 엘리먼트들 탐색 결과에서 특정 번째 엘리먼트만 스타일 지정
+
+		var tmp = document.querySelectorAll(".ancestors div");
+		tmp[1].style.border = "2px solid red";
+	    
+	</script>
+</body>
+</html>

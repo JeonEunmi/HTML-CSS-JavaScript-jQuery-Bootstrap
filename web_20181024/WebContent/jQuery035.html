@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+/* 
+.클래스식별자 : class="식별자"
+#아이디식별자 : id="식별자"
+* : 모든 엘리먼트
+A B : A엘리먼트의 자손 B을 대상으로 스타일 적용 
+*/
+.ancestors * {
+	/* 엘리먼트 특성(인라인, 블럭)에 관계없이 모두 블럭 상태로 만든다. */
+	display: block;
+	/* 블럭 엘리먼트의 경계선 지정 */
+	border: 2px solid lightgrey;
+	/* 전경색 */
+	color: lightgrey;
+	/* 블럭 엘리먼트의 안쪽 여백 */
+	padding: 5px;
+	/* 블럭 엘리먼트의 바깥쪽 여백 */
+	margin: 15px;
+}
+</style>
+
+<!-- jQuery CDN -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+	/* 
+	jQuery Traversing
+	jQuery traversing, which means "move through", are used to "find" (or select) HTML elements based on their relation to other elements. Start with one selection and move through that selection until you reach the elements you desire.
+	- 엘리먼트의 관계를 이용한 노드 탐색하는 방법
+	- parent(부모), ancestor(조상), child(자식), descendant(자손), siblings(형제)
+	
+	jQuery Traversing - Siblings
+	With jQuery you can traverse sideways in the DOM tree to find siblings of an element.
+	Siblings share the same parent. 
+	- 동일한 부모 엘리먼트 밑에 존재하는 자식 엘리먼트들은 형제관계이다.
+	
+	Traversing Sideways in The DOM Tree
+	There are many useful jQuery methods for traversing sideways in the DOM tree:
+	siblings() : 모든 형제 엘리먼트
+	next() : 기준 엘리먼트 이후 형제 엘리먼트
+	nextAll()
+	nextUntil()
+	prev() : 기준 엘리먼트 이전 형제 엘리먼트
+	prevAll()
+	prevUntil()
+	
+
+/*  	$(document).ready(function() {
+
+		/* jQuery */
+/* 		//특정 엘리먼트의 특정 형제 엘리먼트 탐색 진행 및 스타일 지정
+		$("#target").nextUntil("#target2").css("border", "2px solid red");
+
+	}); */
+</script>
+
+</head>
+<body>
+
+	<h1>jQuery Traversing</h1>
+
+	<div class="ancestors">
+		<div style="width: 500px;">
+			div (great-grandparent)
+			<ul>
+				ul (grandparent)
+				<li>li (direct parent) <span>span</span>
+				</li>
+			</ul>
+		</div>
+
+		<div style="width: 500px;" id="target">
+			div (grandparent)
+			<p>
+				p (direct parent) <span>span</span>
+			</p>
+		</div>
+
+		<div style="width: 500px;">
+			div (grandparent)
+			<p>
+				p (direct parent) <span>span</span>
+			</p>
+		</div>
+
+		<p style="width: 500px;" id="target2">
+			p (direct parent) <span>span</span>
+		</p>
+
+	</div>
+
+	<script>
+		/* Javascript */ 
+		
+		//문제) 
+		var target = "P";
+		
+		var obj = document.getElementById("target");
+		var tmp = document.getElementById("target2");
+		
+		var node = obj;
+		while(true) {
+			node = node.nextSibling;
+			if (node != null) {
+				if (node.nodeType == 1) {
+					if(node == tmp){
+					break;
+					}
+					node.style.border = "2px solid red";
+				}
+			} else {
+				break;
+			}
+		} 
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터 전은미</title>
+
+<!-- External style sheet  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/style/style01.css">
+
+<style>
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+div.input {
+	margin-bottom: 10px;
+	padding: 10px;
+	border: 1px solid #e5e5e5;
+	width: 1000px;
+}
+</style>
+
+<!-- External JavaScript -->
+<script src="resources/script/util.js"></script>
+
+</head>
+<body onload="dataAdd()">
+
+	<h1>** 계좌 관리 v2.0 **</h1>
+
+	<div class="input">
+		<h3>계좌조회</h3>
+		<br> 계좌번호> <input type="text" id="accountNumber1">
+		<button onclick="accountPrint()">계좌조회</button>
+	</div>
+
+	<div class="input">
+		<h3>계좌입금 작업을 진행합니다.</h3>
+		<br> 계좌번호> <input type="text" id="accountNumber2"> 입금액> <input
+			type="text" id="deposit">
+		<button onclick="accountDeposit()">입금버튼</button>
+	</div>
+
+	<div class="input">
+		<h3>계좌출금 작업을 진행합니다.</h3>
+		계좌번호><input type="text" id="accountNumber3"> 출금액> <input
+			type="text" id="withdraw"> 비밀번호> <input type="text"
+			id="password">
+		<button onclick="accountWithdraw()">출금버튼</button>
+	</div>
+
+	<div class="input">
+		<h3>계좌 거래 내역 조회</h3>
+		계좌번호> <input type="text" id="accountNumber4">
+		<button onclick="accountTransaction()">계좌거래내역</button>
+	</div>
+
+	<div id="demo"></div>
+
+	<script>
+		var accountArray = [];
+		var transactionArray = [];
+
+		function Account(aid, balance, regDate, lastDate, password) {
+			this.aid = aid;
+			this.balance = balance;
+			this.regDate = regDate;
+			this.lastDate = lastDate;
+			this.password = password;
+			this.toString = function() {
+				return this.aid + " / " + this.balance + " / " + this.regDate
+						+ " / " + this.lastDate;
+			};
+		}
+
+		function Transaction(aid, money, TADate, status, balance) {
+			this.aid = aid;
+			this.money = money;
+			this.TADate = TADate;
+			this.status = status;
+			this.balance = balance;
+			this.toString = function() {
+				return this.aid + " / " + this.money + " / " + this.TADate
+						+ " / " + this.status + " / " + this.balance;
+			};
+		}
+
+		//초기데이터 자동 입력
+		function dataAdd() {
+
+			var account = new Account("2018030101", "40000", "2018-03-01",
+					"2018-03-01", "1234");
+			accountArray.push(account);
+
+			var transaction1 = new Transaction("2018030101", "50000",
+					"2018-03-01", "입금", "60000");
+			var transaction2 = new Transaction("2018030101", "20000",
+					"2018-03-01", "출금", "40000");
+			transactionArray.push(transaction1);
+			transactionArray.push(transaction2);
+
+		}
+
+		function accountPrint(array) {
+
+			var account = document.getElementById("accountNumber1").value;
+
+			var t = "";
+
+			t = accountSearch(account);
+
+			var txt = "";
+
+			txt += "(" + account + ")님의 계좌목록";
+
+			txt += "<table><tbody>";
+			txt += "<tr><th>계좌번호</th><th>잔액</th><th>계좌생성일</th>";
+			txt += "<th>마지막거래일</th></tr>";
+
+			txt += "<tr><th>" + t.aid + "</th><th>" + t.balance + "</th><th>"
+					+ t.regDate + "</th><th>" + t.lastDate + "</th></tr>";
+
+			txt += "</tbody></table>";
+
+			txt += "<div>" + "총 : " + 1 + " 건" + "</div>"
+
+			document.getElementById("demo").innerHTML = txt;
+		}
+
+		function accountSearch(account) {
+
+			var arr = "";
+
+			for (var a = 0; a < accountArray.length; ++a) {
+				var temp = accountArray[a];
+
+				if (temp.aid == account) {
+					arr = temp;
+				}
+			}
+
+			if (arr == null) {
+				document.getElementById("demo").innerHTML = "검색결과가 없습니다.";
+			} else {
+				return arr;
+			}
+
+		}
+
+		function accountDeposit() {
+
+			var crr = "";
+
+			var aid = document.getElementById("accountNumber2").value;
+			var deposit = document.getElementById("deposit").value;
+			var date = today();
+			var status = "입금";
+			var money = "";
+
+			crr = accountSearch(aid);
+			money = parseInt(crr.balance) + parseInt(deposit);
+
+			var transaction = new Transaction(aid, deposit, date, status, money);
+
+			transactionArray.push(transaction);
+			crr.balance = money;
+
+			document.getElementById("demo").innerHTML = "계좌입금 작업이 완료되었습니다.";
+
+		}
+
+		function accountWithdraw() {
+
+			var crr = "";
+
+			var aid = document.getElementById("accountNumber3").value;
+			var withdraw = document.getElementById("withdraw").value;
+			var password = document.getElementById("password").value;
+			var date = today();
+			var status = "출금";
+			var money = "";
+
+			var txt = "";
+
+			crr = accountSearch(aid);
+
+			if (crr.password == password) {
+
+				money = parseInt(crr.balance);
+
+				if (money < withdraw) {
+					txt += "잔액이 부족합니다.";
+
+				} else {
+
+					money -= parseInt(withdraw);
+
+					var transaction = new Transaction(aid, withdraw, date,
+							status, money);
+
+					transactionArray.push(transaction);
+					crr.balance = money;
+
+					txt = "계좌출금 작업이 완료되었습니다.";
+
+				}
+
+			} else {
+				txt = "잘못된 비밀번호 입니다.";
+			}
+
+			document.getElementById("demo").innerHTML = txt;
+
+		}
+
+		function accountTransaction() {
+
+			var account = document.getElementById("accountNumber4").value;
+
+			var arr = [];
+
+			for (var a = 0; a < transactionArray.length; ++a) {
+				var temp = transactionArray[a];
+
+				if (temp.aid == account) {
+					arr.push(temp);
+				}
+			}
+
+			if (arr.length == 0) {
+				document.getElementById("demo").innerHTML = "검색결과가 없습니다.";
+			} else {
+				transactionPrint(arr, account);
+			}
+
+		}
+
+		function transactionPrint(array, account) {
+
+			var txt = "";
+
+			txt += "(" + account + ")님의 계좌목록";
+
+			txt += "<table><tbody>";
+			txt += "<tr><th>계좌번호</th><th>입출금액</th><th>입출금일</th>";
+			txt += "<th>입출금구분</th><th>잔액</th></tr>";
+
+			for (var i = 0; i < array.length; i++) {
+				var t = array[i];
+				txt += "<tr><th>" + t.aid + "</th><th>" + t.money + "</th><th>"
+						+ t.TADate + "</th><th>" + t.status + "</th><th>"
+						+ t.balance + "</th></tr>";
+			}
+
+			txt += "</tbody></table>";
+
+			txt += "<div>" + "총 : " + array.length + " 건" + "</div>"
+
+			document.getElementById("demo").innerHTML = txt;
+
+		}
+	</script>
+	
+</body>
+</html>
